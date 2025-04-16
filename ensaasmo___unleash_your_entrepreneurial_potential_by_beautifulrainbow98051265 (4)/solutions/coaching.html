@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coaching Programs | Ensaasmo</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .coaching-page {
+            padding: 120px 20px 60px;
+            min-height: 100vh;
+            background: var(--light);
+        }
+
+        .coaching-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--neon));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .coaching-programs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 32, 96, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 32, 96, 0.15);
+        }
+
+        .program-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .program-card h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .program-card p {
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--gray-600);
+        }
+
+        .features-list i {
+            color: var(--accent);
+        }
+
+        .enroll-btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--accent), var(--neon));
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .enroll-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    <header class="navbar">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="../index.html#pricing">Pricing</a>
+            <a href="../index.html#assessment">Assessment</a>
+            <a href="../index.html#resources">Resources</a>
+            <a href="../index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="coaching-page">
+        <div class="coaching-content">
+            <div class="page-header">
+                <h1>Coaching Programs</h1>
+                <p>Expert guidance to accelerate your entrepreneurial success</p>
+            </div>
+
+            <div class="coaching-programs">
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Startup Accelerator</h3>
+                    <p>Launch and scale your business with expert guidance</p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Weekly 1-on-1 sessions</li>
+                        <li><i class="fas fa-check"></i> Business plan development</li>
+                        <li><i class="fas fa-check"></i> Market analysis support</li>
+                    </ul>
+                    <a href="../contact.html" class="enroll-btn">Enroll Now</a>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Growth Mastery</h3>
+                    <p>Scale your existing business to new heights</p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Strategic planning</li>
+                        <li><i class="fas fa-check"></i> Performance optimization</li>
+                        <li><i class="fas fa-check"></i> Team leadership coaching</li>
+                    </ul>
+                    <a href="../contact.html" class="enroll-btn">Learn More</a>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Executive Mentorship</h3>
+                    <p>Premium coaching for established entrepreneurs</p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Direct access to industry experts</li>
+                        <li><i class="fas fa-check"></i> Custom growth strategies</li>
+                        <li><i class="fas fa-check"></i> Network expansion</li>
+                    </ul>
+                    <a href="../contact.html" class="enroll-btn">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../app.js"></script>
+</body>
+</html>
+

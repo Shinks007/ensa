@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Mentorship | Ensaasmo</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .mentorship-container {
+            max-width: 1400px;
+            margin: 120px auto 60px;
+            padding: 2rem;
+        }
+
+        .mentorship-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 0 2rem;
+        }
+
+        .mentorship-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--accent), var(--neon));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            margin-bottom: 3rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) #f1f5f9;
+        }
+
+        .category-tabs::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .category-tabs::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        .category-tabs::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .tab-button {
+            padding: 1rem 2rem;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 2rem;
+            font-weight: 600;
+            color: #64748b;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.2);
+        }
+
+        .mentor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            padding: 2rem 0;
+        }
+
+        .mentor-card {
+            width: 400px;
+            height: 500px;
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(14, 165, 233, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 32, 96, 0.08);
+        }
+
+        .mentor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 32, 96, 0.15);
+            border-color: var(--accent);
+        }
+
+        .mentor-photo {
+            height: 120px;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mentor-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .mentor-card:hover .mentor-photo img {
+            transform: scale(1.05);
+        }
+
+        .mentor-info {
+            padding: 2rem;
+        }
+
+        .mentor-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .mentor-name {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .mentor-title {
+            color: var(--accent);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .mentor-expertise {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+
+        .expertise-tag {
+            padding: 0.5rem 1.2rem;
+            background: rgba(14, 165, 233, 0.08);
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .expertise-tag:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .booking-section {
+            border-top: 1px solid rgba(14, 165, 233, 0.1);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .session-pricing {
+            color: var(--accent);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .book-now-btn {
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(135deg, var(--accent), var(--neon));
+            color: white;
+            border-radius: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .book-now-btn i {
+            font-size: 1.1rem;
+        }
+
+        .book-now-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
+        }
+
+        .domain-disclaimer {
+            text-align: center;
+            margin: 3rem auto;
+            max-width: 800px;
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            background: rgba(14, 165, 233, 0.03);
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    
+    <header class="navbar">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="../index.html#pricing">Pricing</a>
+            <a href="../index.html#assessment">Assessment</a>
+            <a href="../index.html#resources">Resources</a>
+            <a href="../index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="mentorship-container">
+        <div class="mentorship-header">
+            <h1>1-1 Mentorship Program</h1>
+            <p>Premium 1-on-1 guidance with industry-leading experts in key domains</p>
+        </div>
+
+        <div class="category-tabs">
+            <button class="tab-button active" data-tab="sales">Sales & Marketing</button>
+            <button class="tab-button" data-tab="finance">Financial Management</button>
+            <button class="tab-button" data-tab="intangible">Intangible Skills</button>
+            <button class="tab-button" data-tab="personal">Personal Growth</button>
+            <button class="tab-button" data-tab="communication">Communication</button>
+            <button class="tab-button" data-tab="design">Design Thinking</button>
+            <button class="tab-button" data-tab="operations">Operations</button>
+        </div>
+
+        <div class="mentor-grid" id="sales">
+            <div class="mentor-card">
+                <div class="mentor-photo">
+                    <i class="fas fa-user-tie" style="color: var(--gray-400); font-size: 6rem;"></i>
+                </div>
+                <div class="mentor-info">
+                    <div class="mentor-meta">
+                        <div>
+                            <h3 class="mentor-name">Damilola Adekoya</h3>
+                            <p class="mentor-title">Digital Strategy Expert</p>
+                        </div>
+                    </div>
+                    <ul class="mentor-expertise">
+                        <li class="expertise-tag">Market Penetration</li>
+                        <li class="expertise-tag">Brand Strategy</li>
+                        <li class="expertise-tag">Revenue Growth</li>
+                    </ul>
+                </div>
+                <div class="booking-section">
+                    <span class="session-pricing">₦25,000/session</span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <p class="domain-disclaimer">
+            Our mentorship partners maintain an average of 22 years industry experience. All sessions include 
+            pre-call preparation materials and post-session action plans. Matching based on your assessment 
+            profile available for premium members.
+        </p>
+
+        <script>
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    // Tab management logic
+                    document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.mentor-grid').forEach(c => c.style.display = 'none');
+                    
+                    // Set active state
+                    button.classList.add('active');
+                    document.getElementById(button.dataset.tab).style.display = 'grid';
+                });
+            });
+        </script>
+    </main>
+
+    <script src="../app.js"></script>
+</body>
+</html>

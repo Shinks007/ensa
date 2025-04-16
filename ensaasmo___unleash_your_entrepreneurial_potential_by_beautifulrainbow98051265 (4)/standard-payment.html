@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard Paystack Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0052a3;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Standard Paystack Payment</h1>
+    
+    <form id="paymentForm">
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="amount">Amount (NGN)</label>
+            <input type="number" id="amount" value="5000" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" required>
+        </div>
+        
+        <div id="error-container" class="error"></div>
+        
+        <button type="submit">Pay Now</button>
+    </form>
+    
+    <script>
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Clear any previous errors
+            document.getElementById('error-container').textContent = '';
+            
+            // Get form values
+            const email = document.getElementById('email').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            
+            // Validate form
+            if (!email || !amount || !firstName || !lastName) {
+                document.getElementById('error-container').textContent = 'Please fill all fields';
+                return;
+            }
+            
+            // Create a reference
+            const reference = 'STD_' + Math.floor(Math.random() * 1000000000) + '_' + new Date().getTime();
+            
+            // Redirect to Paystack standard checkout
+            const paystackUrl = `https://checkout.paystack.com/pk_test_31e4dc92bfa07b60b205af90441e6a33c2faea9a?email=${encodeURIComponent(email)}&amount=${amount * 100}&firstname=${encodeURIComponent(firstName)}&lastname=${encodeURIComponent(lastName)}&ref=${reference}`;
+            
+            window.location.href = paystackUrl;
+        });
+    </script>
+</body>
+</html>

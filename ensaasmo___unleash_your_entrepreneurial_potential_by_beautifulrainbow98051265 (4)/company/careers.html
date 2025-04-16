@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | Ensaasmo</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .careers-page {
+            padding: 120px 20px 60px;
+            min-height: 100vh;
+            background: var(--light);
+        }
+
+        .careers-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--neon));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .position-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 32, 96, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .position-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 32, 96, 0.15);
+            border-color: var(--accent);
+        }
+
+        .position-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .position-title {
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .position-type {
+            padding: 0.5rem 1rem;
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--accent);
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .position-details {
+            margin-bottom: 2rem;
+            color: var(--gray-600);
+        }
+
+        .position-requirements {
+            margin-bottom: 2rem;
+        }
+
+        .requirements-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .requirements-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--gray-600);
+        }
+
+        .requirements-list i {
+            color: var(--accent);
+        }
+
+        .apply-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--accent), var(--neon));
+            color: white;
+            text-decoration: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .apply-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
+        }
+
+        .perks-section {
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .perks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .perk-item {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 32, 96, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .perk-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 32, 96, 0.15);
+        }
+
+        .perk-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    <header class="navbar">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="../index.html#pricing">Pricing</a>
+            <a href="../index.html#assessment">Assessment</a>
+            <a href="../index.html#resources">Resources</a>
+            <a href="../index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="careers-page">
+        <div class="careers-content">
+            <div class="page-header">
+                <h1>Join Our Team</h1>
+                <p>Help us shape the future of entrepreneurship</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="position-card">
+                    <div class="position-header">
+                        <h3 class="position-title">Senior Data Scientist</h3>
+                        <span class="position-type">Full-time</span>
+                    </div>
+                    <div class="position-details">
+                        <p>Lead the development of our assessment algorithms and predictive models.</p>
+                    </div>
+                    <div class="position-requirements">
+                        <ul class="requirements-list">
+                            <li><i class="fas fa-check"></i>5+ years experience in machine learning</li>
+                            <li><i class="fas fa-check"></i>PhD in Computer Science or related field</li>
+                            <li><i class="fas fa-check"></i>Experience with behavioral analytics</li>
+                        </ul>
+                    </div>
+                    <a href="../contact.html" class="apply-btn">Apply Now</a>
+                </div>
+
+                <div class="position-card">
+                    <div class="position-header">
+                        <h3 class="position-title">Business Development Lead</h3>
+                        <span class="position-type">Full-time</span>
+                    </div>
+                    <div class="position-details">
+                        <p>Drive strategic partnerships and expand our market presence.</p>
+                    </div>
+                    <div class="position-requirements">
+                        <ul class="requirements-list">
+                            <li><i class="fas fa-check"></i>7+ years in business development</li>
+                            <li><i class="fas fa-check"></i>Strong network in tech industry</li>
+                            <li><i class="fas fa-check"></i>Track record of closing enterprise deals</li>
+                        </ul>
+                    </div>
+                    <a href="../contact.html" class="apply-btn">Apply Now</a>
+                </div>
+
+                <div class="position-card">
+                    <div class="position-header">
+                        <h3 class="position-title">UX/UI Designer</h3>
+                        <span class="position-type">Full-time</span>
+                    </div>
+                    <div class="position-details">
+                        <p>Create intuitive and engaging experiences for our assessment platform.</p>
+                    </div>
+                    <div class="position-requirements">
+                        <ul class="requirements-list">
+                            <li><i class="fas fa-check"></i>3+ years in product design</li>
+                            <li><i class="fas fa-check"></i>Strong portfolio of digital products</li>
+                            <li><i class="fas fa-check"></i>Experience with design systems</li>
+                        </ul>
+                    </div>
+                    <a href="../contact.html" class="apply-btn">Apply Now</a>
+                </div>
+            </div>
+
+            <div class="perks-section">
+                <h2>Why Join Us</h2>
+                <div class="perks-grid">
+                    <div class="perk-item">
+                        <div class="perk-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h3>Remote-First</h3>
+                        <p>Work from anywhere in the world</p>
+                    </div>
+
+                    <div class="perk-item">
+                        <div class="perk-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Learning Budget</h3>
+                        <p>Annual budget for courses and conferences</p>
+                    </div>
+
+                    <div class="perk-item">
+                        <div class="perk-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Growth Focus</h3>
+                        <p>Clear career progression paths</p>
+                    </div>
+
+                    <div class="perk-item">
+                        <div class="perk-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Health Benefits</h3>
+                        <p>Comprehensive health coverage</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../app.js"></script>
+</body>
+</html>
+

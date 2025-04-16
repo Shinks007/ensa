@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful | Ensaasmo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assessment-styles.css">
+    <style>
+        .success-container {
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 600px;
+            margin: 100px auto;
+            background: white;
+            backdrop-filter: blur(20px);
+            border-radius: 1rem;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 32, 96, 0.15);
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            animation: checkmark 0.8s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+
+        .success-message {
+            margin-bottom: 2.5rem;
+        }
+
+        .success-message h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--neon));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .success-message p {
+            color: var(--gray-600);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .reference-number {
+            background: rgba(14, 165, 233, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            font-size: 1.1rem;
+            color: var(--accent);
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .transaction-details {
+            background: rgba(14, 165, 233, 0.03);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+
+        .transaction-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--gray-800);
+            text-align: center;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        .detail-value {
+            color: var(--gray-800);
+        }
+
+        .get-started-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), var(--neon));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(14, 165, 233, 0.2);
+        }
+
+        .get-started-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 10px rgba(14, 165, 233, 0.3);
+        }
+
+        @keyframes checkmark {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html#pricing">Pricing</a>
+            <a href="index.html#assessment">Assessment</a>
+            <a href="index.html#resources">Resources</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="success-container">
+            <div class="success-icon">✓</div>
+            <div class="success-message">
+                <h2>Payment Successful!</h2>
+                <p>Thank you for your payment. Your assessment package has been activated. You will receive an email shortly with further instructions.</p>
+            </div>
+            <div class="reference-number" id="referenceNumber">-</div>
+            <div class="transaction-details">
+                <h3>Transaction Details</h3>
+                <div class="detail-row">
+                    <span class="detail-label">Package:</span>
+                    <span class="detail-value" id="packageType">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Amount:</span>
+                    <span class="detail-value" id="amountPaid">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Full Name:</span>
+                    <span class="detail-value" id="fullName">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Email:</span>
+                    <span class="detail-value" id="email">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">State:</span>
+                    <span class="detail-value" id="state">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">LGA:</span>
+                    <span class="detail-value" id="lga">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Phone:</span>
+                    <span class="detail-value" id="phone">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Reference:</span>
+                    <span class="detail-value" id="referenceNumber2">-</span>
+                </div>
+                <div class="detail-row pvc-details" style="display: none;">
+                    <span class="detail-label">PVC ID:</span>
+                    <span class="detail-value" id="pvcId">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Transaction Date:</span>
+                    <span class="detail-value" id="transactionDate">-</span>
+                </div>
+            </div>
+            <a href="start-assessment.html" class="get-started-btn">
+                <i class="fas fa-rocket"></i> Start Now
+            </a>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get URL parameters and stored form data
+            const urlParams = new URLSearchParams(window.location.search);
+            const reference = urlParams.get('reference') || urlParams.get('trxref');
+            
+            // Try to get form data from session storage (client-side)
+            let formData = {};
+            try {
+                formData = JSON.parse(sessionStorage.getItem('paymentFormData') || '{}');
+            } catch (e) {
+                console.error('Error parsing session storage data:', e);
+            }
+            
+            // Show loading state
+            const successMessage = document.querySelector('.success-message p');
+            if (successMessage) {
+                successMessage.innerHTML = 'Verifying your payment...<br>Please wait a moment.';
+            }
+            
+            // Handle PVC ID display if payment was made using token
+            const pvcDetails = document.querySelector('.pvc-details');
+            if (reference && reference.startsWith('PVC-')) {
+                // For PVC token payments, no need to verify with Paystack
+                pvcDetails.style.display = 'flex';
+                document.getElementById('pvcId').textContent = reference.replace('PVC-', '');
+                updateSuccessPage(formData, reference);
+            } else if (reference) {
+                // For regular payments, verify with Paystack
+                verifyPayment(reference, formData);
+            } else {
+                // No reference found
+                successMessage.innerHTML = 'Error: No payment reference found.<br>Please contact support if you believe this is an error.';
+            }
+        });
+        
+        function verifyPayment(reference, formData) {
+            // Verify payment with our server
+            fetch(`get-payment-data.php?reference=${reference}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status) {
+                        // Payment verified successfully
+                        updateSuccessPage(data.data, reference);
+                    } else {
+                        // Try the old verification method
+                        fetch(`verify-transaction.php?reference=${reference}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.status) {
+                                    // Payment verified successfully
+                                    updateSuccessPage(formData, reference, data);
+                                } else {
+                                    // Payment verification failed
+                                    const successMessage = document.querySelector('.success-message p');
+                                    if (successMessage) {
+                                        successMessage.innerHTML = 'Payment verification failed.<br>Please contact support with your reference number.';
+                                    }
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error verifying payment:', error);
+                                // If verification fails, still show the page with stored data
+                                updateSuccessPage(formData, reference);
+                            });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error getting payment data:', error);
+                    // Try the old verification method
+                    fetch(`verify-transaction.php?reference=${reference}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.status) {
+                                // Payment verified successfully
+                                updateSuccessPage(formData, reference, data);
+                            } else {
+                                // Payment verification failed
+                                const successMessage = document.querySelector('.success-message p');
+                                if (successMessage) {
+                                    successMessage.innerHTML = 'Payment verification failed.<br>Please contact support with your reference number.';
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error verifying payment:', error);
+                            // If verification fails, still show the page with stored data
+                            updateSuccessPage(formData, reference);
+                        });
+                });
+        }
+        
+        function updateSuccessPage(formData, reference, verificationData = null) {
+            // Update all fields in the success page
+            document.getElementById('packageType').textContent = formData.package || '-';
+            document.getElementById('amountPaid').textContent = formData.amount ? `₦${Number(formData.amount).toLocaleString()}` : '-';
+            document.getElementById('fullName').textContent = formData.fullName || '-';
+            document.getElementById('email').textContent = formData.email || '-';
+            document.getElementById('state').textContent = formData.state || '-';
+            document.getElementById('lga').textContent = formData.lga || '-';
+            document.getElementById('phone').textContent = formData.phone || '-';
+            document.getElementById('referenceNumber').textContent = reference || '-';
+            document.getElementById('referenceNumber2').textContent = reference || '-';
+            document.getElementById('transactionDate').textContent = verificationData?.data?.paid_at || new Date().toLocaleString();
+            
+            // Update success message
+            const successMessage = document.querySelector('.success-message p');
+            if (successMessage) {
+                successMessage.innerHTML = 'Thank you for your payment. Your assessment package has been activated.<br>You will receive an email shortly with further instructions.';
+            }
+            
+            // Clear stored form data
+            sessionStorage.removeItem('paymentFormData');
+        }
+    </script>
+</body>
+</html>

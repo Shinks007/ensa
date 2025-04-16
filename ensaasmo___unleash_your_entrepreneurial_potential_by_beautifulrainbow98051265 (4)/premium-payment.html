@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Payment | Ensaasmo</title>
+    <link rel="stylesheet" href="premium-payment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Floating background elements -->
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+
+    <!-- Premium Header -->
+    <header class="premium-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#assessment">Assessment</a>
+                <a href="index.html#resources">Resources</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="premium-main">
+        <div class="payment-container">
+            <!-- Left Column - Payment Form -->
+            <div class="payment-form-container">
+                <div class="form-header">
+                    <h2>Complete Your Payment</h2>
+                    <p>Secure your access to the entrepreneurial assessment</p>
+                    <div class="secure-badge">
+                        <i class="fas fa-lock"></i>
+                        <span>Secure Payment</span>
+                    </div>
+                </div>
+                <div class="form-body">
+                    <form id="paymentForm" class="payment-form">
+                        <!-- Hidden fields for package and amount -->
+                        <input type="hidden" id="packageInput" name="package" value="">
+                        <input type="hidden" id="amountInput" name="amount" value="">
+                        <input type="hidden" id="affiliateInput" name="affiliate" value="">
+
+                        <div class="form-group affiliate-section" style="display: none;">
+                            <label>Referred By:</label>
+                            <div class="affiliate-info">
+                                <i class="fas fa-user-check"></i>
+                                <span id="affiliateName">-</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" class="form-control" placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="state">State*</label>
+                                <select id="state" name="state" class="form-control" required>
+                                    <option value="" disabled selected>Select your state</option>
+                                    <!-- States will be populated by JavaScript -->
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lga">Local Government Area*</label>
+                                <select id="lga" name="lga" class="form-control" required>
+                                    <option value="" disabled selected>Select your LGA</option>
+                                    <!-- LGAs will be populated based on selected state -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email address" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" required>
+                        </div>
+
+                        <div class="secure-payment-notice">
+                            <i class="fas fa-shield-alt"></i>
+                            <p>Your payment information is secured with bank-level encryption.</p>
+                        </div>
+
+                        <button type="button" id="paymentButton" class="payment-button">
+                            <i class="fas fa-lock"></i> Complete Payment
+                        </button>
+
+                        <div class="payment-divider">
+                            <span>OR</span>
+                        </div>
+
+                        <button type="button" id="tokenButton" class="token-button">
+                            <i class="fas fa-key"></i> Access with Token
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column - Package Summary -->
+            <div class="package-summary-container">
+                <div class="summary-header">
+                    <h3><i class="fas fa-box"></i> Package Summary</h3>
+                </div>
+                <div class="summary-body">
+                    <div class="package-card">
+                        <div class="package-name" id="packageName">Loading...</div>
+                        <div class="package-price" id="packagePrice">Loading...</div>
+                        <ul class="package-features">
+                            <li><i class="fas fa-check-circle"></i> Core competency analysis</li>
+                            <li><i class="fas fa-check-circle"></i> Basic growth metrics</li>
+                            <li><i class="fas fa-check-circle"></i> 7 cognitive assessments</li>
+                            <li><i class="fas fa-check-circle"></i> A detailed report</li>
+                            <li><i class="fas fa-check-circle"></i> 3 key developmental areas</li>
+                            <li><i class="fas fa-check-circle"></i> Testimonial</li>
+                        </ul>
+                    </div>
+
+                    <div class="payment-methods">
+                        <h4>Accepted Payment Methods</h4>
+                        <div class="payment-logos">
+                            <img src="https://cdn.paystack.com/assets/payment-methods/visa.svg" alt="Visa">
+                            <img src="https://cdn.paystack.com/assets/payment-methods/mastercard.svg" alt="Mastercard">
+                            <img src="https://cdn.paystack.com/assets/payment-methods/verve.svg" alt="Verve">
+                            <img src="https://cdn.paystack.com/assets/payment-methods/bank-transfer.svg" alt="Bank Transfer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Premium Footer -->
+    <footer class="premium-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+            </div>
+            <div class="footer-links">
+                <a href="index.html#about">About Us</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#resources">Resources</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="copyright">
+                &copy; <span id="currentYear"></span> Ensaasmo. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Paystack JS -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <!-- Custom JS -->
+    <script src="premium-payment.js"></script>
+</body>
+</html>

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Assessment Report | Ensaasmo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assessment-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --premium-gradient: linear-gradient(135deg, #0c4a6e, #0369a1, #0284c7);
+            --premium-accent: #0ea5e9;
+            --premium-gold: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706);
+            --premium-text: #0f172a;
+            --premium-light: #f8fafc;
+            --premium-card: #ffffff;
+            --premium-shadow: 0 10px 40px rgba(0, 32, 96, 0.12);
+            --premium-glow: 0 0 20px rgba(14, 165, 233, 0.2);
+        }
+
+        body {
+            background: linear-gradient(135deg, #f1f5f9, #f8fafc);
+        }
+
+        .report-container {
+            max-width: 1000px;
+            margin: 30px auto 20px;
+            padding: 0.75rem;
+            position: relative;
+        }
+
+        .report-container::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.3), transparent);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .report-header::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--premium-gradient);
+            border-radius: 3px;
+        }
+
+        .report-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            background: var(--premium-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            font-weight: 800;
+            text-shadow: 0 5px 15px rgba(3, 105, 161, 0.15);
+        }
+
+        .report-header p {
+            color: #475569;
+            font-size: 0.95rem;
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.5;
+            letter-spacing: 0.2px;
+        }
+
+        .user-greeting {
+            color: var(--premium-accent);
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .breadcrumb-nav {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .breadcrumb-nav a {
+            color: #64748b;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-nav a:hover {
+            color: var(--premium-accent);
+        }
+
+        .breadcrumb-separator {
+            margin: 0 0.5rem;
+            color: #cbd5e1;
+        }
+
+        .breadcrumb-current {
+            color: var(--premium-text);
+            font-weight: 600;
+        }
+
+        .detailed-report {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 1.25rem;
+            box-shadow: var(--premium-shadow);
+        }
+
+        .report-section {
+            margin-bottom: 1.25rem;
+        }
+
+        .report-section:last-child {
+            margin-bottom: 0.75rem;
+        }
+
+        .report-section h3 {
+            font-size: 1rem;
+            color: var(--premium-text);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .report-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .report-action-btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--premium-gradient);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 10px rgba(3, 105, 161, 0.2);
+        }
+
+        .report-action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(3, 105, 161, 0.3);
+        }
+
+        .back-btn {
+            background: white;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background: #f8fafc;
+        }
+
+        /* Chart Styles */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 1rem;
+            background: white;
+            border-radius: 8px;
+            padding: 0.75rem;
+            box-shadow: 0 4px 15px rgba(0, 32, 96, 0.1);
+        }
+
+        .chart-legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        /* Overall Score Section */
+        .overall-score-section {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            margin-bottom: 1.25rem;
+            box-shadow: var(--premium-shadow);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .score-circle-container {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            flex-shrink: 0;
+        }
+
+        .score-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--premium-accent);
+            background: rgba(255, 255, 255, 0.9);
+            border: 3px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            box-shadow: var(--premium-shadow);
+            z-index: 2;
+        }
+
+        .score-details {
+            flex: 1;
+        }
+
+        .score-details h3 {
+            font-size: 1.2rem;
+            color: var(--premium-text);
+            margin-bottom: 0.5rem;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .score-details p {
+            color: #475569;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Recommendations Styles */
+        .recommendations-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .recommendation-item {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f1f5f9;
+            transition: all 0.3s ease;
+        }
+
+        .recommendation-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: rgba(14, 165, 233, 0.3);
+        }
+
+        .recommendation-item h4 {
+            font-size: 0.9rem;
+            color: var(--premium-text);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .recommendation-item h4 i {
+            color: var(--premium-accent);
+        }
+
+        .recommendation-item p {
+            color: #475569;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .loading-spinner i {
+            font-size: 2rem;
+            color: var(--premium-accent);
+            margin-bottom: 1rem;
+        }
+
+        .loading-spinner p {
+            color: #64748b;
+            font-size: 1rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .report-container {
+                margin: 0;
+                padding: 0;
+            }
+
+            .breadcrumb-nav, .back-btn, .report-actions {
+                display: none;
+            }
+
+            .detailed-report, .overall-score-section {
+                box-shadow: none;
+                border: 1px solid #e2e8f0;
+                break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .overall-score-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .score-circle-container {
+                margin: 0 auto;
+            }
+
+            .recommendations-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html#pricing">Pricing</a>
+            <a href="index.html#assessment">Assessment</a>
+            <a href="index.html#resources">Resources</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="report-container">
+        <div class="breadcrumb-nav">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="assessment.html">Assessment</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="assessment-results.html">Results</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Detailed Report</span>
+        </div>
+
+        <button class="back-btn" id="backBtn">
+            <i class="fas fa-arrow-left"></i> Back to Results
+        </button>
+
+        <div class="report-header">
+            <h1>Detailed Assessment Report</h1>
+            <p>A comprehensive analysis of your entrepreneurial capabilities and recommendations for growth</p>
+            <p class="user-greeting" id="userGreeting"></p>
+        </div>
+
+        <div class="overall-score-section">
+            <div class="score-circle-container">
+                <div class="score-circle" id="totalScore">0%</div>
+            </div>
+            <div class="score-details">
+                <h3>Overall Potential Score</h3>
+                <p id="overallAssessment">Loading your assessment results...</p>
+            </div>
+        </div>
+
+        <div class="detailed-report">
+            <div class="report-section">
+                <h3>Category Breakdown</h3>
+                <div class="chart-container">
+                    <canvas id="categoryChart"></canvas>
+                </div>
+                <div class="chart-legend" id="chartLegend">
+                    <!-- Legend will be dynamically generated -->
+                </div>
+            </div>
+
+            <div class="report-section" id="developmentRecommendations">
+                <h3>Development Recommendations</h3>
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Generating recommendations...</p>
+                </div>
+            </div>
+
+            <div class="report-actions">
+                <button class="report-action-btn print-report-btn" onclick="window.print()">
+                    <i class="fas fa-print"></i> Print Report
+                </button>
+                <button class="report-action-btn download-report-btn" id="downloadReportBtn">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="package-info.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get assessment results from sessionStorage
+            const results = JSON.parse(sessionStorage.getItem('assessmentResults'));
+            if (!results) {
+                // If no results, redirect to assessment page
+                alert('No assessment results found. Please complete the assessment first.');
+                window.location.href = 'assessment.html';
+                return;
+            }
+
+            // Initialize the report
+            initializeReport(results);
+
+            // Back button functionality
+            document.getElementById('backBtn').addEventListener('click', function() {
+                window.location.href = 'assessment-results.html';
+            });
+
+            // Download button functionality
+            document.getElementById('downloadReportBtn').addEventListener('click', function() {
+                // Show loading state
+                const button = this;
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
+                button.disabled = true;
+
+                // Simulate download (would be replaced with actual PDF generation)
+                setTimeout(function() {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    alert('Your detailed report has been downloaded.');
+                }, 1500);
+            });
+        });
+
+        function initializeReport(results) {
+            // Get user information
+            const userInfo = getUserInfo();
+
+            // Display personalized greeting
+            const userGreeting = document.getElementById('userGreeting');
+            if (userGreeting && userInfo.fullName) {
+                // Split the name to get the first name
+                const firstName = userInfo.fullName.split(' ')[0];
+                userGreeting.textContent = `Welcome, ${firstName}! Here's your detailed assessment report.`;
+            }
+
+            // Update overall score
+            document.getElementById('totalScore').textContent = Math.round(results.percentage) + '%';
+            document.getElementById('overallAssessment').textContent = getOverallAssessmentText(results.totalScore);
+
+            // Create the chart
+            createCategoryChart(results.categories);
+            createChartLegend(results.categories);
+
+            // Generate recommendations
+            generateRecommendations(results);
+        }
+
+        function getOverallAssessmentText(totalPoints) {
+            if (totalPoints < 124) {
+                return 'Our assessment suggests you should reconsider whether owning a business is the right step for you at this time. Consider focusing on skill development and gaining more experience before pursuing entrepreneurship.';
+            } else if (totalPoints >= 124 && totalPoints <= 217) {
+                return 'You\'re on the verge of being ready for entrepreneurship. However, it would be wise to spend some time strengthening your weaker areas before proceeding. Focus on the areas where you scored lower to build a stronger foundation.';
+            } else {
+                return 'Congratulations! Our assessment indicates you\'re ready to start a new business now. You\'ve demonstrated strong entrepreneurial capabilities across key areas. Consider leveraging your strengths while continuing to develop in other areas.';
+            }
+        }
+
+        function createCategoryChart(categories) {
+            // Sort categories by percentage (highest to lowest)
+            const sortedCategories = [...categories].sort((a, b) => b.percentage - a.percentage);
+
+            // Prepare data for chart
+            const labels = sortedCategories.map(category => category.name);
+            const data = sortedCategories.map(category => Math.round(category.percentage));
+
+            // Generate colors based on score levels
+            const backgroundColors = sortedCategories.map(category => {
+                if (category.score >= category.thresholds.medium) {
+                    return 'rgba(16, 185, 129, 0.7)'; // Advanced - Green
+                } else if (category.score >= category.thresholds.low) {
+                    return 'rgba(245, 158, 11, 0.7)'; // Intermediate - Amber
+                } else {
+                    return 'rgba(239, 68, 68, 0.7)'; // Beginner - Red
+                }
+            });
+
+            // Create chart
+            const ctx = document.getElementById('categoryChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Category Scores (%)',
+                        data: data,
+                        backgroundColor: backgroundColors,
+                        borderColor: backgroundColors.map(color => color.replace('0.7', '1')),
+                        borderWidth: 1,
+                        borderRadius: 6,
+                        maxBarThickness: 50
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                afterLabel: function(context) {
+                                    const category = sortedCategories[context.dataIndex];
+                                    let skillLevel = 'Beginner';
+                                    if (category.score >= category.thresholds.medium) {
+                                        skillLevel = 'Advanced';
+                                    } else if (category.score >= category.thresholds.low) {
+                                        skillLevel = 'Intermediate';
+                                    }
+                                    return `${skillLevel} Level: ${category.score}/${category.maxScore} points`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createChartLegend(categories) {
+            const legendContainer = document.getElementById('chartLegend');
+            const legendHTML = `
+                <div class="legend-item">
+                    <div class="legend-color" style="background: rgba(16, 185, 129, 0.7)"></div>
+                    <span>Advanced Level</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: rgba(245, 158, 11, 0.7)"></div>
+                    <span>Intermediate Level</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: rgba(239, 68, 68, 0.7)"></div>
+                    <span>Beginner Level</span>
+                </div>
+            `;
+            legendContainer.innerHTML = legendHTML;
+        }
+
+        function generateRecommendations(results) {
+            const recommendationsContainer = document.getElementById('developmentRecommendations');
+
+            // Sort categories by percentage (lowest to highest)
+            const weakestCategories = [...results.categories].sort((a, b) => a.percentage - b.percentage).slice(0, 3);
+
+            // Sort categories by percentage (highest to lowest)
+            const strongestCategories = [...results.categories].sort((a, b) => b.percentage - a.percentage).slice(0, 3);
+
+            // Create recommendations content
+            let recommendationsContent = `
+                <h3>Development Recommendations</h3>
+                <div class="recommendations-container">
+                    <div class="recommendation-item">
+                        <h4><i class="fas fa-bullseye"></i> Focus on Key Development Areas</h4>
+                        <p>Prioritize improving your skills in ${weakestCategories.map(area => area.name).join(', ')}. These areas currently have the most room for growth and will have the greatest impact on your overall entrepreneurial readiness.</p>
+                    </div>
+
+                    <div class="recommendation-item">
+                        <h4><i class="fas fa-trophy"></i> Leverage Your Strengths</h4>
+                        <p>Build upon your strongest areas: ${strongestCategories.map(area => area.name).join(', ')}. Use these strengths to compensate for weaker areas while you work on developing them.</p>
+                    </div>
+
+                    <div class="recommendation-item">
+                        <h4><i class="fas fa-graduation-cap"></i> Continuous Learning</h4>
+                        <p>Engage with our learning resources specifically tailored to your development needs. Regular practice and application of these skills will accelerate your growth.</p>
+                    </div>
+
+                    <div class="recommendation-item">
+                        <h4><i class="fas fa-sync-alt"></i> Reassess Regularly</h4>
+                        <p>We recommend retaking this assessment every 3-6 months to track your progress and identify new areas for development as you grow.</p>
+                    </div>
+                </div>
+            `;
+
+            // Update the recommendations container
+            recommendationsContainer.innerHTML = recommendationsContent;
+        }
+    </script>
+</body>
+</html>

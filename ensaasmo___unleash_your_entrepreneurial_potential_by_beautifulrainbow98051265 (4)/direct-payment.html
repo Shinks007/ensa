@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment | Ensaasmo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="payment-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .error-container {
+            display: none;
+            background-color: #ffebee;
+            color: #c62828;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .form-group .error-message {
+            color: #c62828;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+        
+        .form-group input.error,
+        .form-group select.error {
+            border-color: #c62828;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html#pricing">Pricing</a>
+            <a href="index.html#assessment">Assessment</a>
+            <a href="index.html#resources">Resources</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="payment-page">
+        <div class="payment-container">
+            <div class="payment-header">
+                <h1>Complete Your Payment</h1>
+                <p>Please provide your details to proceed with the payment</p>
+            </div>
+
+            <div class="payment-details">
+                <div class="package-info">
+                    <h3>Package Details</h3>
+                    <div class="package-row">
+                        <span class="package-label">Package:</span>
+                        <span class="package-value" id="packageName">Standard Package</span>
+                    </div>
+                    <div class="package-row">
+                        <span class="package-label">Amount:</span>
+                        <span class="package-value" id="amount">₦5,000</span>
+                    </div>
+                </div>
+
+                <div id="errorContainer" class="error-container"></div>
+
+                <form id="paymentForm" action="process-payment.php" method="post" class="payment-form">
+                    <input type="hidden" id="packageInput" name="package" value="Standard Package">
+                    <input type="hidden" id="amountInput" name="amount" value="5000">
+                    
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <select id="state" name="state" required>
+                            <option value="">Select your state</option>
+                            <option value="Abia">Abia</option>
+                            <option value="Adamawa">Adamawa</option>
+                            <option value="Akwa Ibom">Akwa Ibom</option>
+                            <option value="Anambra">Anambra</option>
+                            <option value="Bauchi">Bauchi</option>
+                            <option value="Bayelsa">Bayelsa</option>
+                            <option value="Benue">Benue</option>
+                            <option value="Borno">Borno</option>
+                            <option value="Cross River">Cross River</option>
+                            <option value="Delta">Delta</option>
+                            <option value="Ebonyi">Ebonyi</option>
+                            <option value="Edo">Edo</option>
+                            <option value="Ekiti">Ekiti</option>
+                            <option value="Enugu">Enugu</option>
+                            <option value="FCT">Federal Capital Territory</option>
+                            <option value="Gombe">Gombe</option>
+                            <option value="Imo">Imo</option>
+                            <option value="Jigawa">Jigawa</option>
+                            <option value="Kaduna">Kaduna</option>
+                            <option value="Kano">Kano</option>
+                            <option value="Katsina">Katsina</option>
+                            <option value="Kebbi">Kebbi</option>
+                            <option value="Kogi">Kogi</option>
+                            <option value="Kwara">Kwara</option>
+                            <option value="Lagos">Lagos</option>
+                            <option value="Nasarawa">Nasarawa</option>
+                            <option value="Niger">Niger</option>
+                            <option value="Ogun">Ogun</option>
+                            <option value="Ondo">Ondo</option>
+                            <option value="Osun">Osun</option>
+                            <option value="Oyo">Oyo</option>
+                            <option value="Plateau">Plateau</option>
+                            <option value="Rivers">Rivers</option>
+                            <option value="Sokoto">Sokoto</option>
+                            <option value="Taraba">Taraba</option>
+                            <option value="Yobe">Yobe</option>
+                            <option value="Zamfara">Zamfara</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lga">Local Government Area</label>
+                        <select id="lga" name="lga" required>
+                            <option value="">Select your LGA</option>
+                            <!-- LGAs will be populated based on selected state -->
+                        </select>
+                    </div>
+
+                    <div class="secure-payment">
+                        <div class="secure-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="secure-text">
+                            <p>Secure Payment</p>
+                            <span>Your payment information is secure with our payment provider</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="pay-button">
+                        Pay Now
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="blog.html">Blog</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="support.html">Support</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Ensaasmo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Nigeria States and LGAs data
+        const nigeriaStatesLGAs = {
+            "Abia": ["Aba North", "Aba South", "Arochukwu", "Bende", "Ikwuano", "Isiala Ngwa North", "Isiala Ngwa South", "Isuikwuato", "Obi Ngwa", "Ohafia", "Osisioma", "Ugwunagbo", "Ukwa East", "Ukwa West", "Umuahia North", "Umuahia South", "Umu Nneochi"],
+            "Adamawa": ["Demsa", "Fufure", "Ganye", "Gayuk", "Gombi", "Grie", "Hong", "Jada", "Lamurde", "Madagali", "Maiha", "Mayo Belwa", "Michika", "Mubi North", "Mubi South", "Numan", "Shelleng", "Song", "Toungo", "Yola North", "Yola South"],
+            "Akwa Ibom": ["Abak", "Eastern Obolo", "Eket", "Esit Eket", "Essien Udim", "Etim Ekpo", "Etinan", "Ibeno", "Ibesikpo Asutan", "Ibiono-Ibom", "Ika", "Ikono", "Ikot Abasi", "Ikot Ekpene", "Ini", "Itu", "Mbo", "Mkpat-Enin", "Nsit-Atai", "Nsit-Ibom", "Nsit-Ubium", "Obot Akara", "Okobo", "Onna", "Oron", "Oruk Anam", "Udung-Uko", "Ukanafun", "Uruan", "Urue-Offong/Oruko", "Uyo"],
+            "Lagos": ["Agege", "Ajeromi-Ifelodun", "Alimosho", "Amuwo-Odofin", "Apapa", "Badagry", "Epe", "Eti Osa", "Ibeju-Lekki", "Ifako-Ijaiye", "Ikeja", "Ikorodu", "Kosofe", "Lagos Island", "Lagos Mainland", "Mushin", "Ojo", "Oshodi-Isolo", "Shomolu", "Surulere"]
+            // Add other states and their LGAs as needed
+        };
+        
+        // Handle state and LGA selection
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set package and amount from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const packageParam = urlParams.get('package');
+            const amountParam = urlParams.get('amount');
+            
+            if (packageParam) {
+                document.getElementById('packageName').textContent = packageParam;
+                document.getElementById('packageInput').value = packageParam;
+            }
+            
+            if (amountParam) {
+                document.getElementById('amount').textContent = '₦' + Number(amountParam).toLocaleString();
+                document.getElementById('amountInput').value = amountParam;
+            }
+            
+            // Handle state and LGA selection
+            const stateSelect = document.getElementById('state');
+            const lgaSelect = document.getElementById('lga');
+            
+            if (stateSelect && lgaSelect) {
+                stateSelect.addEventListener('change', function() {
+                    const selectedState = this.value;
+                    
+                    // Clear LGA options
+                    lgaSelect.innerHTML = '<option value="">Select your LGA</option>';
+                    
+                    // If a state is selected, populate LGAs
+                    if (selectedState && nigeriaStatesLGAs[selectedState]) {
+                        nigeriaStatesLGAs[selectedState].forEach(lga => {
+                            const option = document.createElement('option');
+                            option.value = lga;
+                            option.textContent = lga;
+                            lgaSelect.appendChild(option);
+                        });
+                    }
+                });
+            }
+            
+            // Form validation
+            const paymentForm = document.getElementById('paymentForm');
+            if (paymentForm) {
+                paymentForm.addEventListener('submit', function(e) {
+                    const fullName = document.getElementById('fullName').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const phone = document.getElementById('phone').value.trim();
+                    const state = document.getElementById('state').value;
+                    const lga = document.getElementById('lga').value;
+                    
+                    let isValid = true;
+                    let errorMessage = '';
+                    
+                    if (fullName.length < 3) {
+                        isValid = false;
+                        errorMessage = 'Please enter your full name (at least 3 characters)';
+                    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                        isValid = false;
+                        errorMessage = 'Please enter a valid email address';
+                    } else if (!/^\+?[\d\s-]{10,}$/.test(phone)) {
+                        isValid = false;
+                        errorMessage = 'Please enter a valid phone number';
+                    } else if (!state) {
+                        isValid = false;
+                        errorMessage = 'Please select your state';
+                    } else if (!lga) {
+                        isValid = false;
+                        errorMessage = 'Please select your LGA';
+                    }
+                    
+                    if (!isValid) {
+                        e.preventDefault();
+                        const errorContainer = document.getElementById('errorContainer');
+                        errorContainer.textContent = errorMessage;
+                        errorContainer.style.display = 'block';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Materials | Ensaasmo</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --premium-blue: linear-gradient(135deg, #0c4a6e, #0369a1, #0284c7);
+            --premium-dark: #0f172a;
+            --premium-light: #f8fafc;
+            --premium-accent: #0ea5e9;
+            --premium-shadow: 0 10px 40px rgba(0, 32, 96, 0.12);
+            --premium-glow: 0 0 20px rgba(14, 165, 233, 0.2);
+            --premium-gray: #64748b;
+            --premium-light-gray: #e2e8f0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f1f5f9, #f8fafc);
+        }
+
+        .learning-container {
+            max-width: 1200px;
+            margin: 80px auto 60px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .learning-container::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.3), transparent);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--premium-blue);
+            border-radius: 3px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--premium-blue);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            font-weight: 800;
+            text-shadow: 0 5px 15px rgba(3, 105, 161, 0.15);
+        }
+
+        .header p {
+            color: #475569;
+            font-size: 1rem;
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.5;
+            letter-spacing: 0.2px;
+        }
+
+        .package-info {
+            background-color: rgba(14, 165, 233, 0.08);
+            border-left: 4px solid var(--premium-accent);
+            padding: 0.75rem 1rem;
+            margin: 1.5rem auto 0;
+            border-radius: 0.5rem;
+            max-width: 600px;
+        }
+
+        .package-info p {
+            color: #334155;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .package-info strong {
+            color: var(--premium-accent);
+        }
+
+        .key-area-badge {
+            display: inline-block;
+            background-color: #121212;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .key-area-badge i {
+            color: #fbbf24;
+            margin-right: 0.3rem;
+        }
+
+        .key-area {
+            position: relative;
+            border: 2px solid rgba(251, 191, 36, 0.3);
+            box-shadow: 0 5px 20px rgba(251, 191, 36, 0.1);
+        }
+
+        .key-area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #fbbf24, #f59e0b);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Highlight effect for category navigation */
+        .highlight-category {
+            animation: highlight-pulse 2s ease-in-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes highlight-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7); }
+            50% { box-shadow: 0 0 0 15px rgba(14, 165, 233, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
+        }
+
+        /* Responsive styles for key development areas */
+        @media (max-width: 768px) {
+            .key-areas-container {
+                padding: 1rem;
+            }
+
+            .key-areas-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .key-area-btn {
+                width: 100%;
+                padding: 0.75rem 1rem;
+            }
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .skill-category {
+            background: white;
+            border: 1px solid rgba(14, 165, 233, 0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--premium-shadow);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--premium-blue);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(3, 105, 161, 0.15);
+            border-color: rgba(14, 165, 233, 0.3);
+        }
+
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(3, 105, 161, 0.9), rgba(14, 165, 233, 0.85));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 10;
+            border-radius: 1rem;
+        }
+
+        .category-overlay-content {
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .category-overlay-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-overlay-description {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .skill-category:hover .category-overlay {
+            opacity: 1;
+        }
+
+        .skill-category:hover .category-overlay-content {
+            transform: translateY(0);
+        }
+
+        .view-more-container {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .view-more-btn {
+            background: linear-gradient(to right, rgba(14, 165, 233, 0.1), rgba(3, 105, 161, 0.1));
+            color: var(--premium-accent);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            padding: 0.5rem 1.25rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .view-more-btn:hover {
+            background: var(--premium-blue);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(3, 105, 161, 0.2);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(3, 105, 161, 0.2));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--premium-accent);
+            box-shadow: 0 4px 10px rgba(3, 105, 161, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--premium-dark);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--premium-blue);
+            border-radius: 2px;
+        }
+
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .resource-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(14, 165, 233, 0.05);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .resource-item:hover {
+            background: white;
+            box-shadow: 0 8px 20px rgba(3, 105, 161, 0.1);
+            transform: translateY(-3px);
+            border-color: rgba(14, 165, 233, 0.2);
+        }
+
+        .resource-item:hover .resource-icon {
+            transform: scale(1.1);
+            color: var(--premium-accent);
+        }
+
+        .resource-icon {
+            color: var(--premium-gray);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            background: rgba(241, 245, 249, 0.7);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .resource-info {
+            flex: 1;
+            min-width: 0; /* Prevents text overflow issues */
+        }
+
+        .resource-info h4 {
+            font-size: 1rem;
+            color: var(--premium-dark);
+            margin: 0 0 0.25rem 0;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .resource-info p {
+            color: #64748b;
+            margin: 0;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Add blur effect for non-premium users */
+        .non-premium .resource-info p {
+            filter: blur(3px);
+        }
+
+        .hidden-resources {
+            display: none;
+        }
+
+        .premium-tag {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(3, 105, 161, 0.2));
+            color: var(--premium-accent);
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.5rem;
+            font-size: 0.7rem;
+            margin-left: auto;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(14, 165, 233, 0.1);
+            flex-shrink: 0;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--premium-gray);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+            color: var(--premium-accent);
+            background: linear-gradient(to right, rgba(14, 165, 233, 0.05), rgba(3, 105, 161, 0.05));
+            border-color: rgba(14, 165, 233, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="../index.html#pricing">Pricing</a>
+            <a href="../index.html#assessment">Assessment</a>
+            <a href="../index.html#resources">Resources</a>
+            <a href="../index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="learning-container">
+        <a href="../index.html#resources" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Resources
+        </a>
+
+        <div class="header">
+            <h1>Professional Development Library</h1>
+            <p>Curated materials for entrepreneurial mastery</p>
+        </div>
+
+        <div class="skills-grid">
+            <!-- Sales and Marketing Skills -->
+            <div class="skill-category" id="Sales & Marketing Expertise">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="section-title">Sales & Marketing Expertise</h3>
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Building a StoryBrand</h4>
+                            <p>Donald Miller - Clarify Your Message</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Digital Marketing Strategy</h4>
+                            <p>Simon Kingsnorth - Online Marketing Guide</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>The Psychology of Selling</h4>
+                            <p>Brian Tracy - Increase Sales Faster</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>The Conversion Code</h4>
+                            <p>Chris Smith - Capturing Internet Leads</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Hooked: How to Build Habit-Forming Products</h4>
+                            <p>Nir Eyal - Creating Customer Habits</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Traction: How Any Startup Can Achieve Explosive Customer Growth</h4>
+                            <p>Gabriel Weinberg - 19 Channels for Growth</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Crossing the Chasm: Marketing and Selling Disruptive Products to Mainstream Customers</h4>
+                            <p>Geoffrey Moore - Technology Adoption</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Building a StoryBrand: Clarify Your Message So Customers Will Listen</h4>
+                            <p>Donald Miller - Brand Messaging</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Pre-Suasion: A Revolutionary Way to Influence and Persuade</h4>
+                            <p>Robert Cialdini - Psychological Selling Tactics</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>They Ask You Answer: A Revolutionary Approach to Inbound Sales</h4>
+                            <p>Marcus Sheridan - Content Marketing Tactics</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Financial Skills -->
+            <div class="skill-category" id="Financial Management">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3 class="section-title">Financial Management</h3>
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Financial Intelligence</h4>
+                            <p>Karen Berman & Joe Knight - Money Management</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Profit First</h4>
+                            <p>Mike Michalowicz - Cash Management</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Small Business Financial Management</h4>
+                            <p>Steven M. Bragg - Essential Tools</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Financial Modeling for Business Owners and Entrepreneurs</h4>
+                            <p>Tom Y. Sawyer - Developing Excel Models</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>The Intelligent Investor: The Definitive Book on Value Investing</h4>
+                            <p>Benjamin Graham - Updated by Jason Zweig</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Financial Shenanigans: How to Detect Accounting Gimmicks & Fraud</h4>
+                            <p>Howard M. Schilit - Forensic Accounting</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Corporate Financial Management: Strategies for Maximizing Shareholder Wealth</h4>
+                            <p>Glen Arnold - Corporate Finance Strategies</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Financial Markets and Institutions: A Practical Perspective</h4>
+                            <p>Stanley G. Eakins - Modern Banking Systems</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>International Financial Management</h4>
+                            <p>Cheol S. Eun - Multinational Business Finance</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Financial Strategy for Public Managers</h4>
+                            <p>Sharon Kioko - Government Financial Planning</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Intangible Skills -->
+            <div class="skill-category" id="Intangible Skills">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="section-title">Intangible Skills</h3>
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Emotional Intelligence 2.0</h4>
+                            <p>Travis Bradberry - Strategies for Increasing EQ</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Crucial Conversations</h4>
+                            <p>Kerry Patterson et al. - Tools for Talking</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Mindset: The New Psychology of Success</h4>
+                            <p>Carol S. Dweck - Fulfill Potential</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Mindset: Changing The Way You Think To Fulfil Your Potential</h4>
+                            <p>Carol S. Dweck - Growth Mindset</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Blink: The Power of Thinking Without Thinking</h4>
+                            <p>Malcolm Gladwell - Intuitive Decision Making</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Grit: The Power of Passion and Perseverance</h4>
+                            <p>Angela Duckworth - Long-term Success Factors</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>The Art of Possibility: Transforming Professional and Personal Life</h4>
+                            <p>Rosamund Stone Zander - Creative Mindset</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Deep Work: Rules for Focused Success in a Distracted World</h4>
+                            <p>Cal Newport - Cognitive Performance</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Thinking in Bets: Making Smarter Decisions When You Don't Have All the Facts</h4>
+                            <p>Annie Duke - Decision Making Under Uncertainty</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>The Compound Effect: Jumpstart Your Income, Your Life, Your Success</h4>
+                            <p>Darren Hardy - Incremental Progress</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Personal Skills -->
+            <div class="skill-category" id="Personal Skills">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="section-title">Personal Skills</h3>
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>The 7 Habits of Highly Effective People</h4>
+                            <p>Stephen R. Covey - Personal Change</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Atomic Habits</h4>
+                            <p>James Clear - Build Good Habits</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Deep Work</h4>
+                            <p>Cal Newport - Focused Success</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Essentialism: The Disciplined Pursuit of Less</h4>
+                            <p>Greg McKeown - Prioritizing What Matters</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Indistractable: How to Control Your Attention and Choose Your Life</h4>
+                            <p>Nir Eyal - Managing Distractions</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>The Power of Now</h4>
+                            <p>Eckhart Tolle - Mindfulness and Presence</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>The Miracle Morning: The Not-So-Obvious Secret Guaranteed to Transform Your Life</h4>
+                            <p>Hal Elrod - Morning Routine for Success</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Mini Habits: Smaller Habits, Bigger Results</h4>
+                            <p>Stephen Guise - Building Lasting Habits</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>The One Thing: The Surprisingly Simple Truth Behind Extraordinary Results</h4>
+                            <p>Gary Keller - Achieving More by Doing Less</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Communication and Collaboration -->
+            <div class="skill-category" id="Communication & Collaboration">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="section-title">Communication & Collaboration</h3>
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Never Split the Difference</h4>
+                            <p>Chris Voss - Negotiating</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Talk Like TED</h4>
+                            <p>Carmine Gallo - Public Speaking</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Collaboration: How Leaders Avoid the Traps</h4>
+                            <p>Morten Hansen - Build Bridges</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Crucial Accountability: Tools for Resolving Violated Expectations, Broken Commitments, and Bad Behavior</h4>
+                            <p>Kerry Patterson et al. - Effective Communication</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Influence: The Psychology of Persuasion</h4>
+                            <p>Robert Cialdini - Understanding Human Behavior</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Difficult Conversations: How to Discuss What Matters Most</h4>
+                            <p>Douglas Stone - Effective Communication</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>The Art of Public Speaking</h4>
+                            <p>Dale Carnegie - Overcoming Fear and Building Confidence</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Nonviolent Communication: A Language of Life</h4>
+                            <p>Marshall B. Rosenberg - Effective Communication</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Just Listen: Discover the Secret to Getting Through to Absolutely Anyone</h4>
+                            <p>Mark Goulston - Effective Listening</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Design Thinking -->
+            <div class="skill-category" id="Design Thinking">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="section-title">Design Thinking</h3>
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Change by Design</h4>
+                            <p>Tim Brown - Transform Organizations</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Sprint</h4>
+                            <p>Jake Knapp - Solve Big Problems</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>The Design Thinking Playbook</h4>
+                            <p>Michael Lewrick - Mindful Digital Transformation</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Designing Your Life: How to Build a Well-Lived, Joyful Life</h4>
+                            <p>Bill Burnett - Applying Design Principles to Life</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Creative Confidence: Unleashing the Creative Potential Within Us All</h4>
+                            <p>David Kelley - Building Creative Confidence</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>The Innovator's DNA: Mastering the Five Skills of Disruptive Innovators</h4>
+                            <p>Jeff Dyer - Developing Innovative Skills</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Orbiting the Giant Hairball: A Corporate Fool's Guide to Surviving with Grace</h4>
+                            <p>Gordon MacKenzie - Embracing Creativity in Business</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>A Technique for Producing Ideas</h4>
+                            <p>James Webb Young - Generating Ideas</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>The War of Art: Break Through the Blocks and Win Your Inner Creative Battles</h4>
+                            <p>Steven Pressfield - Overcoming Creative Blocks</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Administrative and Operational -->
+            <div class="skill-category" id="Administrative & Operational">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3 class="section-title">Administrative & Operational</h3>
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>The Effective Executive</h4>
+                            <p>Peter F. Drucker - Guide to Getting Things Done</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Operations Management</h4>
+                            <p>Jay Heizer - Sustainability and Supply Chain</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Project Management Body of Knowledge</h4>
+                            <p>Project Management Institute - Essential Guide</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses</h4>
+                            <p>Eric Ries - Lean Principles for Startups</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Agile Project Management with Scrum</h4>
+                            <p>Ken Schwaber - Agile Methodologies</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Essentialism: The Disciplined Pursuit of Less</h4>
+                            <p>Greg McKeown - Prioritizing What Matters</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>Getting Things Done: The Art of Stress-Free Productivity</h4>
+                            <p>David Allen - Productivity and Time Management</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>The 4-Hour Work Week: Escape the 9-5, Live Anywhere and Join the New Rich</h4>
+                            <p>Timothy Ferriss - Lifestyle Design</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                    <li class="resource-item">
+                        <i class="fas fa-book resource-icon"></i>
+                        <div class="resource-info">
+                            <h4>The 80/20 Principle: The Secret to Achieving More with Less</h4>
+                            <p>Richard Koch - Understanding the Pareto Principle</p>
+                        </div>
+                        <span class="premium-tag">Premium</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="../app.js"></script>
+
+    <style>
+        .key-area-badge {
+            background: white;
+            color: #121212;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+
+
+        /* Key Development Areas Container Styles */
+        .key-areas-container {
+            background-color: rgba(226, 232, 240, 0.3);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .key-areas-message p {
+            margin-bottom: 1rem;
+            font-weight: 500;
+            color: #334155;
+        }
+
+        .key-areas-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .key-area-btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #121212;
+            color: white;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .key-area-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+            background: var(--premium-blue);
+        }
+
+        .key-area-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .upgrade-message {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #64748b;
+            font-style: italic;
+        }
+    </style>
+    <script src="../package-info.js"></script>
+    <script>
+        // Function to navigate to a specific category
+        function navigateToCategory(categoryId) {
+            // Find the category element
+            const categoryElement = document.getElementById(categoryId);
+
+            if (categoryElement) {
+                // Scroll to the category with smooth animation
+                categoryElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                // Add a highlight effect
+                categoryElement.classList.add('highlight-category');
+
+                // Remove the highlight after 2 seconds
+                setTimeout(() => {
+                    categoryElement.classList.remove('highlight-category');
+                }, 2000);
+
+                // If this is a key development area, make sure it's accessible
+                const categoryTitle = categoryElement.querySelector('.section-title').textContent;
+                sessionStorage.setItem('lastAccessedCategory', categoryTitle);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        // Function to check if a category is in the key development areas
+        function checkIfKeyDevelopmentArea(categoryTitle) {
+            try {
+                const keyAreasJSON = sessionStorage.getItem('keyDevelopmentAreas');
+                if (!keyAreasJSON) return false;
+
+                const keyAreas = JSON.parse(keyAreasJSON);
+                return keyAreas.some(area => categoryTitle.includes(area) || area.includes(categoryTitle));
+            } catch (error) {
+                console.error('Error checking key development areas:', error);
+                return false;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if there's a hash in the URL to navigate to a specific category
+            if (window.location.hash) {
+                const categoryId = window.location.hash.substring(1); // Remove the # symbol
+                setTimeout(() => {
+                    navigateToCategory(categoryId);
+                }, 500); // Small delay to ensure the page is fully loaded
+            }
+
+            // Add key development areas section to the header for non-premium users
+            try {
+                const packageInfo = getPackageInfo();
+                const header = document.querySelector('.header');
+
+                // Only add key areas for non-premium users
+                if (!packageInfo.hasPremiumAccess) {
+                    // Map of category names to their corresponding IDs in learning-materials.html
+                    const categoryMapping = {
+                        'Sales & Marketing Skills': 'Sales & Marketing Expertise',
+                        'Financial Skills': 'Financial Management',
+                        'Intangible Skills': 'Intangible Skills',
+                        'Personal Skills': 'Personal Skills',
+                        'Communication & Collaboration Skills': 'Communication & Collaboration',
+                        'Design Thinking Skills': 'Design Thinking',
+                        'Administrative & Operational Skills': 'Administrative & Operational'
+                    };
+
+                    // Default key areas if none are found in session storage
+                    const defaultKeyAreas = ['Sales & Marketing Skills', 'Financial Skills', 'Intangible Skills'];
+
+                    // Get key areas from session storage or use defaults
+                    let keyAreas = defaultKeyAreas;
+                    try {
+                        const keyAreasJSON = sessionStorage.getItem('keyDevelopmentAreas');
+                        if (keyAreasJSON) {
+                            const storedKeyAreas = JSON.parse(keyAreasJSON);
+                            if (storedKeyAreas && storedKeyAreas.length > 0) {
+                                keyAreas = storedKeyAreas;
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Error getting key development areas:', error);
+                    }
+
+                    // Create key areas container
+                    const keyAreasContainer = document.createElement('div');
+                    keyAreasContainer.className = 'key-areas-container';
+
+                    // Add message
+                    const keyAreasMessage = document.createElement('div');
+                    keyAreasMessage.className = 'key-areas-message';
+                    keyAreasMessage.innerHTML = `<p>Your <strong>${packageInfo.name}</strong> gives you access to resources in your <strong>key development areas</strong>:</p>`;
+                    keyAreasContainer.appendChild(keyAreasMessage);
+
+                    // Create buttons container
+                    const keyAreaButtons = document.createElement('div');
+                    keyAreaButtons.className = 'key-areas-buttons';
+                    keyAreasContainer.appendChild(keyAreaButtons);
+
+                    // Create buttons for each key area
+                    keyAreas.forEach(area => {
+                        const button = document.createElement('button');
+                        button.className = 'key-area-btn';
+                        button.textContent = area;
+
+                        // Map the area name to the corresponding ID in learning-materials.html
+                        const targetId = categoryMapping[area] || area;
+
+                        // Add click event to navigate to the category
+                        button.addEventListener('click', function() {
+                            navigateToCategory(targetId);
+
+                            // Also grant access to this category
+                            const category = document.getElementById(targetId);
+                            if (category) {
+                                // Remove non-premium class and overlay if present
+                                category.classList.remove('non-premium');
+                                const overlay = category.querySelector('.category-overlay');
+                                if (overlay) {
+                                    overlay.remove();
+                                }
+
+                                // Highlight the category with black background and white text
+                                category.style.background = '#121212';
+                                category.style.color = 'white';
+                                category.style.borderColor = '#000';
+                                category.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.2)';
+
+                                // Change text colors for all elements inside
+                                const headings = category.querySelectorAll('h3, h4');
+                                headings.forEach(heading => {
+                                    heading.style.color = 'white';
+                                });
+
+                                const paragraphs = category.querySelectorAll('p');
+                                paragraphs.forEach(p => {
+                                    p.style.color = 'rgba(255, 255, 255, 0.8)';
+                                });
+
+                                // Remove premium tags from all resources in this category
+                                const premiumTags = category.querySelectorAll('.premium-tag');
+                                premiumTags.forEach(tag => {
+                                    tag.style.display = 'none';
+                                });
+
+                                // Remove blur effect from resource descriptions
+                                const resourceDescriptions = category.querySelectorAll('.resource-info p');
+                                resourceDescriptions.forEach(desc => {
+                                    desc.style.filter = 'none';
+                                });
+                            }
+                        });
+
+                        keyAreaButtons.appendChild(button);
+                    });
+
+                    // Add upgrade message
+                    const upgradeMessage = document.createElement('p');
+                    upgradeMessage.className = 'upgrade-message';
+                    upgradeMessage.textContent = 'Upgrade to the Professional package for unlimited access to all resources.';
+                    keyAreasContainer.appendChild(upgradeMessage);
+
+                    // Insert after header
+                    header.after(keyAreasContainer);
+                }
+            } catch (error) {
+                console.error('Error creating key development areas:', error);
+            }
+
+            // Add package info message to the header for premium users only
+            try {
+                const packageInfo = getPackageInfo();
+                const header = document.querySelector('.header');
+
+                // Only show package info for premium users, since we have the key areas container for non-premium
+                if (packageInfo.hasPremiumAccess) {
+                    const packageMessage = document.createElement('div');
+                    packageMessage.className = 'package-info';
+                    packageMessage.innerHTML = `<p>Your <strong>${packageInfo.name}</strong> gives you <strong>unlimited access</strong> to all premium resources.</p>`;
+                    header.appendChild(packageMessage);
+                }
+            } catch (error) {
+                console.error('Error displaying package info:', error);
+            }
+
+            // Process each skill category
+            document.querySelectorAll('.skill-category').forEach(category => {
+                const resourceItems = category.querySelectorAll('.resource-item');
+                const initialItemsCount = 8;
+
+                // Get category name from section title
+                const categoryTitle = category.querySelector('.section-title').textContent;
+                const categoryId = category.id;
+
+                // Check if user has premium access or if this is a key development area
+                const hasPremium = hasPremiumAccess();
+                const isKeyArea = checkIfKeyDevelopmentArea(categoryTitle);
+                const fromKeyAreaLink = window.location.search.includes('keyArea=true');
+                const hasAccess = hasPremium || isKeyArea || fromKeyAreaLink;
+
+                // Add a class to indicate this is a key development area
+                if (isKeyArea) {
+                    category.classList.add('key-area');
+
+                    // Add a badge to indicate this is a key development area
+                    const keyAreaBadge = document.createElement('div');
+                    keyAreaBadge.className = 'key-area-badge';
+                    keyAreaBadge.innerHTML = '<i class="fas fa-star"></i> Key Development Area';
+                    category.querySelector('.section-title').after(keyAreaBadge);
+                }
+
+                // Add non-premium class if user doesn't have access
+                if (!hasAccess) {
+                    category.classList.add('non-premium');
+                }
+
+                // Only add overlay for users without access
+                if (!hasAccess) {
+                    // Create and add category overlay
+                    const overlay = document.createElement('div');
+                    overlay.className = 'category-overlay';
+
+                    const overlayContent = document.createElement('div');
+                    overlayContent.className = 'category-overlay-content';
+
+                    const overlayTitle = document.createElement('div');
+                    overlayTitle.className = 'category-overlay-title';
+                    overlayTitle.textContent = categoryTitle;
+
+                    const overlayDescription = document.createElement('div');
+                    overlayDescription.className = 'category-overlay-description';
+                    overlayDescription.textContent = 'Explore resources for ' + categoryTitle;
+
+                    overlayContent.appendChild(overlayTitle);
+                    overlayContent.appendChild(overlayDescription);
+                    overlay.appendChild(overlayContent);
+                    category.appendChild(overlay);
+                }
+
+                // Hide items beyond the initial count
+                resourceItems.forEach((item, index) => {
+                    if (index >= initialItemsCount) {
+                        item.classList.add('hidden-resources');
+                    }
+                });
+
+                // Only add view more button if there are more than initialItemsCount items
+                if (resourceItems.length > initialItemsCount) {
+                    // Create view more container
+                    const viewMoreContainer = document.createElement('div');
+                    viewMoreContainer.className = 'view-more-container';
+
+                    // Create view more button
+                    const viewMoreBtn = document.createElement('button');
+                    viewMoreBtn.className = 'view-more-btn';
+                    viewMoreBtn.innerHTML = '<i class="fas fa-plus-circle"></i> View More';
+                    viewMoreBtn.setAttribute('data-expanded', 'false');
+
+                    // Add click event to toggle visibility
+                    viewMoreBtn.addEventListener('click', function() {
+                        const isExpanded = this.getAttribute('data-expanded') === 'true';
+                        const hiddenItems = category.querySelectorAll('.hidden-resources');
+
+                        if (!isExpanded) {
+                            // Show hidden items
+                            hiddenItems.forEach(item => {
+                                item.classList.remove('hidden-resources');
+                            });
+                            this.innerHTML = '<i class="fas fa-minus-circle"></i> View Less';
+                            this.setAttribute('data-expanded', 'true');
+                        } else {
+                            // Hide items beyond initial count
+                            resourceItems.forEach((item, index) => {
+                                if (index >= initialItemsCount) {
+                                    item.classList.add('hidden-resources');
+                                }
+                            });
+                            this.innerHTML = '<i class="fas fa-plus-circle"></i> View More';
+                            this.setAttribute('data-expanded', 'false');
+                        }
+                    });
+
+                    // Add button to container and container to category
+                    viewMoreContainer.appendChild(viewMoreBtn);
+                    category.appendChild(viewMoreContainer);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

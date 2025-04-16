@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started | Ensaasmo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="payment-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="cyber-grid"></div>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+            </a>
+        </div>
+
+        <!-- Hamburger Menu Button -->
+        <button class="hamburger" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <line x1="4" y1="6" x2="20" y2="6" stroke-width="2" stroke-linecap="round"/>
+                <line x1="4" y1="12" x2="20" y2="12" stroke-width="2" stroke-linecap="round"/>
+                <line x1="4" y1="18" x2="20" y2="18" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </button>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <nav class="mobile-nav">
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#assessment">Assessment</a>
+                <a href="index.html#resources">Resources</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="nav-links">
+            <a href="index.html#pricing">Pricing</a>
+            <a href="index.html#assessment">Assessment</a>
+            <a href="index.html#resources">Resources</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="payment-page">
+        <!-- Floating background elements -->
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+
+        <div class="payment-container">
+            <a href="index.html" class="exit-link">
+                <i class="fas fa-times"></i>
+            </a>
+
+            <div class="payment-header">
+                <h2>Get Started with Your Assessment</h2>
+                <p>Complete your secure payment to begin</p>
+            </div>
+
+            <div class="package-summary">
+                <h3><i class="fas fa-box"></i> Selected Package</h3>
+                <div class="package-details">
+                    <div class="package-name" id="packageName">Loading...</div>
+                    <div class="package-price" id="packagePrice">Loading...</div>
+                </div>
+            </div>
+
+            <!-- Server-side form submission -->
+            <form id="paymentForm" action="process-payment.php" method="post" class="payment-form">
+                <!-- Hidden fields for package and amount -->
+                <input type="hidden" id="packageInput" name="package" value="">
+                <input type="hidden" id="amountInput" name="amount" value="">
+                <input type="hidden" id="affiliateInput" name="affiliate" value="">
+
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="state">State*</label>
+                    <select id="state" name="state" required>
+                        <option value="" disabled selected>Select your state</option>
+                        <!-- States will be populated by JavaScript -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="lga">Local Government Area*</label>
+                    <select id="lga" name="lga" required>
+                        <option value="" disabled selected>Select your LGA</option>
+                        <!-- LGAs will be populated based on selected state -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+
+                <div class="form-group affiliate-section" style="display: none;">
+                    <label>Referred By:</label>
+                    <div class="affiliate-info">
+                        <i class="fas fa-user-check"></i>
+                        <span id="affiliateName">-</span>
+                    </div>
+                </div>
+
+                <div class="secure-payment-notice">
+                    <i class="fas fa-shield-alt"></i>
+                    <p>Secured by Paystack. Your payment information is encrypted.</p>
+                </div>
+
+                <button type="submit" id="paymentButton" class="payment-button">
+                    <i class="fas fa-lock"></i> Complete Payment
+                </button>
+
+                <div class="payment-separator">
+                    <span>OR</span>
+                </div>
+
+                <button type="button" id="tokenButton" class="token-button">
+                    <i class="fas fa-key"></i> Access with Token
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get affiliate info from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const affiliateParam = urlParams.get('ref');
+
+            if (affiliateParam) {
+                // Decode and split the affiliate parameter
+                const decodedParam = decodeURIComponent(affiliateParam);
+                const affiliateName = decodedParam.split('_').join(' ');
+
+                // Show affiliate section and update name
+                const affiliateSection = document.querySelector('.affiliate-section');
+                const affiliateNameSpan = document.getElementById('affiliateName');
+                const affiliateInput = document.getElementById('affiliateInput');
+
+                if (affiliateSection && affiliateNameSpan && affiliateInput) {
+                    affiliateSection.style.display = 'block';
+                    affiliateNameSpan.textContent = affiliateName;
+                    affiliateInput.value = affiliateParam;
+                }
+            }
+
+            // Valid Nigerian states
+            const validStates = [
+                "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue", "Borno",
+                "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "FCT", "Gombe", "Imo",
+                "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", "Kwara", "Lagos", "Nasarawa",
+                "Niger", "Ogun", "Ondo", "Osun", "Oyo", "Plateau", "Rivers", "Sokoto", "Taraba",
+                "Yobe", "Zamfara"
+            ];
+
+            // LGA data for Nigerian states
+            const lgaData = {
+                "Abia": ["Aba North", "Aba South", "Arochukwu", "Bende", "Ikwuano", "Isiala Ngwa North", "Isiala Ngwa South", "Isuikwuato", "Obi Ngwa", "Ohafia", "Osisioma", "Ugwunagbo", "Ukwa East", "Ukwa West", "Umuahia North", "Umuahia South", "Umu Nneochi"],
+                "Adamawa": ["Demsa", "Fufure", "Ganye", "Gayuk", "Gombi", "Grie", "Hong", "Jada", "Lamurde", "Madagali", "Maiha", "Mayo Belwa", "Michika", "Mubi North", "Mubi South", "Numan", "Shelleng", "Song", "Toungo", "Yola North", "Yola South"],
+                "Akwa Ibom": ["Abak", "Eastern Obolo", "Eket", "Esit Eket", "Essien Udim", "Etim Ekpo", "Etinan", "Ibeno", "Ibesikpo Asutan", "Ibiono-Ibom", "Ika", "Ikono", "Ikot Abasi", "Ikot Ekpene", "Ini", "Itu", "Mbo", "Mkpat-Enin", "Nsit-Atai", "Nsit-Ibom", "Nsit-Ubium", "Obot Akara", "Okobo", "Onna", "Oron", "Oruk Anam", "Udung-Uko", "Ukanafun", "Uruan", "Urue-Offong/Oruko", "Uyo"],
+                "Lagos": ["Agege", "Ajeromi-Ifelodun", "Alimosho", "Amuwo-Odofin", "Apapa", "Badagry", "Epe", "Eti Osa", "Ibeju-Lekki", "Ifako-Ijaiye", "Ikeja", "Ikorodu", "Kosofe", "Lagos Island", "Lagos Mainland", "Mushin", "Ojo", "Oshodi-Isolo", "Shomolu", "Surulere"]
+                // Add other states and their LGAs as needed
+            };
+
+            // Get package details from URL parameters
+            const packageParam = urlParams.get('package');
+            const amount = urlParams.get('amount');
+
+            // Update package details in the UI and hidden form fields
+            document.getElementById('packageName').textContent = packageParam || 'Foundation Package';
+            document.getElementById('packagePrice').textContent = amount ? `₦${Number(amount).toLocaleString()}` : '₦5,000';
+            document.getElementById('packageInput').value = packageParam || 'Foundation Package';
+            document.getElementById('amountInput').value = amount || '5000';
+
+            const paymentForm = document.getElementById('paymentForm');
+            const paymentButton = document.getElementById('paymentButton');
+            const tokenButton = document.getElementById('tokenButton');
+            const stateInput = document.getElementById('state');
+            const lgaInput = document.getElementById('lga');
+
+            // Populate state dropdown
+            validStates.forEach(state => {
+                const option = document.createElement('option');
+                option.value = state;
+                option.textContent = state;
+                stateInput.appendChild(option);
+            });
+
+            // State dropdown change event
+            stateInput.addEventListener('change', function() {
+                // Clear existing LGA options
+                lgaInput.innerHTML = '<option value="" disabled selected>Select your LGA</option>';
+
+                const selectedState = this.value;
+
+                if (selectedState && lgaData[selectedState]) {
+                    // Enable LGA dropdown
+                    lgaInput.disabled = false;
+
+                    // Populate LGA dropdown based on selected state
+                    lgaData[selectedState].forEach(lga => {
+                        const option = document.createElement('option');
+                        option.value = lga;
+                        option.textContent = lga;
+                        lgaInput.appendChild(option);
+                    });
+                } else {
+                    // Disable LGA dropdown if no state is selected
+                    lgaInput.disabled = true;
+                }
+
+                validateForm();
+            });
+
+            // LGA dropdown change event
+            lgaInput.addEventListener('change', function() {
+                validateForm();
+            });
+
+            // Function to validate form
+            function validateForm() {
+                const fullName = document.getElementById('fullName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const state = document.getElementById('state').value;
+                const lga = document.getElementById('lga').value;
+                const phone = document.getElementById('phone').value.trim();
+
+                // Validate name (minimum 3 characters)
+                const isValidName = fullName.length >= 3;
+
+                // Validate email (must be valid email format)
+                const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+                // Validate state (must be in valid states list)
+                const isValidState = validStates.includes(state);
+
+                // Validate LGA (must be at least 3 characters)
+                const isValidLGA = lga.length >= 3;
+
+                // Validate phone (must be valid phone format)
+                const isValidPhone = /^\+?[\d\s-]{10,}$/.test(phone);
+
+                const isValid = isValidName && isValidEmail && isValidState && isValidLGA && isValidPhone;
+
+                // Update button states with animation
+                if (isValid) {
+                    if (!paymentButton.classList.contains('active')) {
+                        // Add active class with animation
+                        paymentButton.classList.add('active');
+                        tokenButton.classList.add('active');
+
+                        // Add a subtle pop animation when buttons become active
+                        paymentButton.animate([
+                            { transform: 'scale(1)', opacity: 0.8 },
+                            { transform: 'scale(1.05)', opacity: 1 },
+                            { transform: 'scale(1)', opacity: 1 }
+                        ], {
+                            duration: 400,
+                            easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+                        });
+
+                        tokenButton.animate([
+                            { transform: 'scale(1)', opacity: 0.8 },
+                            { transform: 'scale(1.05)', opacity: 1 },
+                            { transform: 'scale(1)', opacity: 1 }
+                        ], {
+                            duration: 400,
+                            easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                            delay: 100
+                        });
+                    }
+                } else {
+                    paymentButton.classList.remove('active');
+                    tokenButton.classList.remove('active');
+                }
+
+                return isValid;
+            }
+
+            // Add event listeners to all form fields
+            const formFields = ['fullName', 'email', 'state', 'lga', 'phone'];
+            formFields.forEach(fieldId => {
+                document.getElementById(fieldId).addEventListener('input', validateForm);
+            });
+
+            // Form submission validation
+            paymentForm.addEventListener('submit', function(e) {
+                if (!validateForm()) {
+                    e.preventDefault();
+                    alert('Please fill in all required fields correctly');
+                    return false;
+                }
+
+                // Store form data in session storage for the success page
+                const formData = {
+                    package: document.getElementById('packageInput').value,
+                    fullName: document.getElementById('fullName').value,
+                    email: document.getElementById('email').value,
+                    state: document.getElementById('state').value,
+                    lga: document.getElementById('lga').value,
+                    phone: document.getElementById('phone').value,
+                    amount: document.getElementById('amountInput').value,
+                    affiliate: document.getElementById('affiliateInput').value
+                };
+                
+                sessionStorage.setItem('paymentFormData', JSON.stringify(formData));
+                
+                // Form will be submitted to process-payment.php
+                return true;
+            });
+
+            // Add token button handler
+            tokenButton.addEventListener('click', function() {
+                showTokenModal();
+            });
+
+            // Token modal functionality
+            function showTokenModal() {
+                // Token modal code from your original payment.js
+                // This is a placeholder - you would need to include the full token modal code here
+                alert('Token functionality is not implemented in this version.');
+            }
+        });
+    </script>
+</body>
+</html>

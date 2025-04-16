@@ -1,0 +1,4 @@
+/* Update Professional package text colors */
+.pricing-card.highlighted .features li {
+  color: white;
+}

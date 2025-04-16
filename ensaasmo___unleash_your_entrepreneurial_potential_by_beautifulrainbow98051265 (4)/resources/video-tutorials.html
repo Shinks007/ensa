@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Tutorials | Ensaasmo</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --premium-blue: linear-gradient(135deg, #0c4a6e, #0369a1, #0284c7);
+            --premium-dark: #0f172a;
+            --premium-light: #f8fafc;
+            --premium-accent: #0ea5e9;
+            --premium-shadow: 0 10px 40px rgba(0, 32, 96, 0.12);
+            --premium-glow: 0 0 20px rgba(14, 165, 233, 0.2);
+            --premium-gray: #64748b;
+            --premium-light-gray: #e2e8f0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f1f5f9, #f8fafc);
+        }
+
+        .tutorials-container {
+            max-width: 1200px;
+            margin: 80px auto 60px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .tutorials-container::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.3), transparent);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--premium-blue);
+            border-radius: 3px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--premium-blue);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            font-weight: 800;
+            text-shadow: 0 5px 15px rgba(3, 105, 161, 0.15);
+        }
+
+        .header p {
+            color: #475569;
+            font-size: 1rem;
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.5;
+            letter-spacing: 0.2px;
+        }
+
+        .package-info {
+            background-color: rgba(14, 165, 233, 0.08);
+            border-left: 4px solid var(--premium-accent);
+            padding: 0.75rem 1rem;
+            margin: 1.5rem auto 0;
+            border-radius: 0.5rem;
+            max-width: 600px;
+        }
+
+        .package-info p {
+            color: #334155;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .package-info strong {
+            color: var(--premium-accent);
+        }
+
+        .key-area-badge {
+            display: inline-block;
+            background-color: #121212;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .key-area-badge i {
+            color: #fbbf24;
+            margin-right: 0.3rem;
+        }
+
+        .key-area {
+            position: relative;
+            border: 2px solid rgba(251, 191, 36, 0.3);
+            box-shadow: 0 5px 20px rgba(251, 191, 36, 0.1);
+        }
+
+        .key-area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #fbbf24, #f59e0b);
+        }
+
+        .key-area-link {
+            background: linear-gradient(90deg, #fbbf24, #f59e0b) !important;
+            box-shadow: 0 4px 10px rgba(251, 191, 36, 0.3) !important;
+        }
+
+        .key-area-link:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 15px rgba(251, 191, 36, 0.4) !important;
+        }
+
+        .development-areas-message ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .development-areas-message li {
+            background: #121212;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .skill-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .skill-category {
+            background: white;
+            border: 1px solid rgba(14, 165, 233, 0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--premium-shadow);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--premium-blue);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(3, 105, 161, 0.15);
+            border-color: rgba(14, 165, 233, 0.3);
+        }
+
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(3, 105, 161, 0.9), rgba(14, 165, 233, 0.85));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 10;
+            border-radius: 1rem;
+        }
+
+        .category-overlay-content {
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .category-overlay-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-overlay-description {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .skill-category:hover .category-overlay {
+            opacity: 1;
+        }
+
+        .skill-category:hover .category-overlay-content {
+            transform: translateY(0);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(3, 105, 161, 0.2));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--premium-accent);
+            box-shadow: 0 4px 10px rgba(3, 105, 161, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--premium-dark);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--premium-blue);
+            border-radius: 2px;
+        }
+
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .hidden-resources {
+            display: none;
+        }
+
+        .view-more-container {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .view-more-btn {
+            background: linear-gradient(to right, rgba(14, 165, 233, 0.1), rgba(3, 105, 161, 0.1));
+            color: var(--premium-accent);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            padding: 0.5rem 1.25rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .view-more-btn:hover {
+            background: var(--premium-blue);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(3, 105, 161, 0.2);
+        }
+
+        .resource-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(14, 165, 233, 0.05);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .resource-item:hover {
+            background: white;
+            box-shadow: 0 8px 20px rgba(3, 105, 161, 0.1);
+            transform: translateY(-3px);
+            border-color: rgba(14, 165, 233, 0.2);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 160px;
+            background: #f1f5f9;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .resource-item:hover .video-thumbnail {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(3, 105, 161, 0.15);
+        }
+
+        .video-thumbnail i {
+            font-size: 2rem;
+            color: var(--premium-accent);
+            background: rgba(255, 255, 255, 0.9);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(3, 105, 161, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .resource-item:hover .video-thumbnail i {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(3, 105, 161, 0.3);
+        }
+
+        .resource-info {
+            flex: 1;
+            min-width: 0; /* Prevents text overflow issues */
+        }
+
+        .resource-info h4 {
+            font-size: 1rem;
+            color: var(--premium-dark);
+            margin: 0 0 0.25rem 0;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .resource-info p {
+            color: var(--premium-gray);
+            margin: 0;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Add blur effect for non-premium users */
+        .non-premium .resource-info p {
+            filter: blur(3px);
+        }
+
+        .premium-tag {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(3, 105, 161, 0.2));
+            color: var(--premium-accent);
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.5rem;
+            font-size: 0.7rem;
+            margin-left: auto;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(14, 165, 233, 0.1);
+            flex-shrink: 0;
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            z-index: 5;
+            backdrop-filter: blur(4px);
+        }
+
+        .video-link {
+            color: var(--premium-accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            background: rgba(14, 165, 233, 0.05);
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(14, 165, 233, 0.1);
+            margin-top: auto;
+        }
+
+        .video-link:hover {
+            background: var(--premium-blue);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(3, 105, 161, 0.2);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--premium-gray);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+            color: var(--premium-accent);
+            background: linear-gradient(to right, rgba(14, 165, 233, 0.05), rgba(3, 105, 161, 0.05));
+            border-color: rgba(14, 165, 233, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="../index.html#pricing">Pricing</a>
+            <a href="../index.html#assessment">Assessment</a>
+            <a href="../index.html#resources">Resources</a>
+            <a href="../index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="tutorials-container">
+        <a href="../index.html#resources" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Resources
+        </a>
+
+        <div class="header">
+            <h1>Professional Development Videos</h1>
+            <p>Expert-led video lessons across key entrepreneurial domains</p>
+        </div>
+
+        <div class="skill-sections">
+            <!-- Sales & Marketing Skills -->
+            <div class="skill-category" id="Sales & Marketing Expertise">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="section-title">Sales & Marketing</h3>
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Digital Marketing Masterclass</h4>
+                            <p>45 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Advanced Sales Techniques</h4>
+                            <p>32 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Sales Funnel Optimization</h4>
+                            <p>48 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Customer Retention Strategies</h4>
+                            <p>35 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Email Marketing Automation</h4>
+                            <p>42 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Influencer Marketing Tactics</h4>
+                            <p>40 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Conversion Rate Optimization</h4>
+                            <p>37 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Social Media Advertising</h4>
+                            <p>55 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Customer Journey Mapping</h4>
+                            <p>48 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Sales Pipeline Management</h4>
+                            <p>50 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Financial Skills -->
+            <div class="skill-category" id="Financial Management">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3 class="section-title">Financial Management</h3>
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Cash Flow Optimization</h4>
+                            <p>28 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Financial Forecasting</h4>
+                            <p>36 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Financial Risk Analysis</h4>
+                            <p>44 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Investment Portfolio Management</h4>
+                            <p>50 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Financial Modeling Essentials</h4>
+                            <p>55 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Tax Optimization Strategies</h4>
+                            <p>39 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Business Valuation Methods</h4>
+                            <p>48 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Financial Forecasting Models</h4>
+                            <p>42 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Business Valuation Techniques</h4>
+                            <p>45 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Financial Risk Assessment</h4>
+                            <p>52 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Intangible Skills -->
+            <div class="skill-category" id="Intangible Skills">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="section-title">Intangible Skills</h3>
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Emotional Intelligence</h4>
+                            <p>41 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Building Mental Resilience</h4>
+                            <p>38 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Leadership Development</h4>
+                            <p>45 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Strategic Thinking</h4>
+                            <p>42 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Adaptability and Agility</h4>
+                            <p>39 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Creativity and Innovation</h4>
+                            <p>48 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Cultural Intelligence</h4>
+                            <p>44 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Decision-Making Under Pressure</h4>
+                            <p>48 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Creative Problem Solving</h4>
+                            <p>50 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Emotional Intelligence</h4>
+                            <p>41 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Building Mental Resilience</h4>
+                            <p>38 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Personal Skills -->
+            <div class="skill-category" id="Personal Skills">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="section-title">Personal Skills</h3>
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Time Management Mastery</h4>
+                            <p>38 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Building Resilience</h4>
+                            <p>32 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Goal Setting and Achievement</h4>
+                            <p>40 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Self-Awareness and Reflection</h4>
+                            <p>45 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Mindfulness and Meditation</h4>
+                            <p>36 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Physical and Mental Wellbeing</h4>
+                            <p>42 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Productivity and Efficiency</h4>
+                            <p>40 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Stress Management Techniques</h4>
+                            <p>45 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Goal Setting Strategies</h4>
+                            <p>50 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Self-Care and Mindfulness</h4>
+                            <p>48 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Communication and Collaboration Skills -->
+            <div class="skill-category" id="Communication & Collaboration">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="section-title">Communication & Collaboration</h3>
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Effective Team Communication</h4>
+                            <p>45 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Conflict Resolution Strategies</h4>
+                            <p>39 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Active Listening and Feedback</h4>
+                            <p>40 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Collaboration and Teamwork</h4>
+                            <p>45 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Public Speaking and Presentation</h4>
+                            <p>42 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Networking and Building Relationships</h4>
+                            <p>48 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Communication Strategies</h4>
+                            <p>40 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Team Leadership and Management</h4>
+                            <p>45 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Collaborative Problem Solving</h4>
+                            <p>50 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Effective Meeting Management</h4>
+                            <p>48 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Design Thinking Skills -->
+            <div class="skill-category" id="Design Thinking">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="section-title">Design Thinking</h3>
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Design Thinking Fundamentals</h4>
+                            <p>52 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>User-Centered Problem Solving</h4>
+                            <p>42 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Empathy and User Research</h4>
+                            <p>45 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Ideation and Prototyping</h4>
+                            <p>40 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Testing and Iteration</h4>
+                            <p>39 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Design Thinking in Business</h4>
+                            <p>48 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Service Design Principles</h4>
+                            <p>45 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Design Systems and Tools</h4>
+                            <p>50 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Design Thinking for Innovation</h4>
+                            <p>52 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Human-Centered Design</h4>
+                            <p>48 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Administrative and Operational Skills -->
+            <div class="skill-category" id="Administrative & Operational">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3 class="section-title">Administrative & Operational</h3>
+                </div>
+                <ul class="resource-list">
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Project Management Essentials</h4>
+                            <p>48 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Process Optimization Techniques</h4>
+                            <p>36 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Supply Chain Management</h4>
+                            <p>42 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Inventory Management and Control</h4>
+                            <p>40 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Quality Control and Assurance</h4>
+                            <p>45 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Compliance and Regulatory Affairs</h4>
+                            <p>48 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Operational Excellence</h4>
+                            <p>50 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Business Process Improvement</h4>
+                            <p>45 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Project Planning and Scheduling</h4>
+                            <p>52 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li class="resource-item">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="resource-info">
+                            <h4>Resource Allocation and Management</h4>
+                            <p>48 min</p>
+                            <span class="premium-tag">Premium</span>
+                        </div>
+                        <a href="../payment.html?package=Premium" class="video-link">
+                            Watch Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="../app.js"></script>
+    <script src="../package-info.js"></script>
+    <script>
+        // Function to check if a category is in the key development areas
+        function checkIfKeyDevelopmentArea(categoryTitle) {
+            try {
+                const keyAreasJSON = sessionStorage.getItem('keyDevelopmentAreas');
+                if (!keyAreasJSON) return false;
+
+                const keyAreas = JSON.parse(keyAreasJSON);
+                return keyAreas.some(area => categoryTitle.includes(area) || area.includes(categoryTitle));
+            } catch (error) {
+                console.error('Error checking key development areas:', error);
+                return false;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add package info message to the header
+            try {
+                const packageInfo = getPackageInfo();
+                const header = document.querySelector('.header');
+                const packageMessage = document.createElement('div');
+                packageMessage.className = 'package-info';
+
+                // Check if there are key development areas
+                const keyAreasJSON = sessionStorage.getItem('keyDevelopmentAreas');
+                const hasKeyAreas = keyAreasJSON && JSON.parse(keyAreasJSON).length > 0;
+
+                if (packageInfo.hasPremiumAccess) {
+                    packageMessage.innerHTML = `<p>Your <strong>${packageInfo.name}</strong> gives you <strong>unlimited access</strong> to all premium videos.</p>`;
+                } else if (hasKeyAreas) {
+                    const keyAreas = JSON.parse(keyAreasJSON);
+                    packageMessage.innerHTML = `
+                        <p>Your <strong>${packageInfo.name}</strong> gives you access to videos in your <strong>key development areas</strong>:</p>
+                        <ul>
+                            ${keyAreas.map(area => `<li>${area}</li>`).join('')}
+                        </ul>
+                        <p>Upgrade to the Professional package for unlimited access to all videos.</p>
+                    `;
+                    packageMessage.className = 'package-info development-areas-message';
+                } else {
+                    packageMessage.innerHTML = `<p>Your <strong>${packageInfo.name}</strong> gives you <strong>limited access</strong> to videos. Upgrade to Professional for full access.</p>`;
+                }
+
+                header.appendChild(packageMessage);
+            } catch (error) {
+                console.error('Error displaying package info:', error);
+            }
+
+            // Process each skill category
+            document.querySelectorAll('.skill-category').forEach(category => {
+                const resourceItems = category.querySelectorAll('.resource-item');
+                const initialItemsCount = 8;
+
+                // Get category name from section title
+                const categoryTitle = category.querySelector('.section-title').textContent;
+                const categoryId = category.id;
+
+                // Check if user has premium access or if this is a key development area
+                const hasPremium = hasPremiumAccess();
+                const isKeyArea = checkIfKeyDevelopmentArea(categoryTitle);
+                const fromKeyAreaLink = window.location.search.includes('keyArea=true');
+                const hasAccess = hasPremium || isKeyArea || fromKeyAreaLink;
+
+                // Add a class to indicate this is a key development area
+                if (isKeyArea) {
+                    category.classList.add('key-area');
+
+                    // Add a badge to indicate this is a key development area
+                    const keyAreaBadge = document.createElement('div');
+                    keyAreaBadge.className = 'key-area-badge';
+                    keyAreaBadge.innerHTML = '<i class="fas fa-star"></i> Key Development Area';
+                    category.querySelector('.section-title').after(keyAreaBadge);
+                }
+
+                // Add non-premium class if user doesn't have access
+                if (!hasAccess) {
+                    category.classList.add('non-premium');
+                }
+
+                // Only add overlay for users without access
+                if (!hasAccess) {
+                    // Create and add category overlay
+                    const overlay = document.createElement('div');
+                    overlay.className = 'category-overlay';
+
+                    const overlayContent = document.createElement('div');
+                    overlayContent.className = 'category-overlay-content';
+
+                    const overlayTitle = document.createElement('div');
+                    overlayTitle.className = 'category-overlay-title';
+                    overlayTitle.textContent = categoryTitle;
+
+                    const overlayDescription = document.createElement('div');
+                    overlayDescription.className = 'category-overlay-description';
+                    overlayDescription.textContent = 'Explore video tutorials for ' + categoryTitle;
+
+                    overlayContent.appendChild(overlayTitle);
+                    overlayContent.appendChild(overlayDescription);
+                    overlay.appendChild(overlayContent);
+                    category.appendChild(overlay);
+                }
+
+                // Update video links based on access level
+                resourceItems.forEach(item => {
+                    const videoLink = item.querySelector('.video-link');
+                    if (videoLink && hasAccess) {
+                        // For users with access, point to actual video content
+                        // This is just a placeholder - in a real implementation, you would point to the actual video URL
+                        const videoId = videoLink.getAttribute('href').split('?')[0];
+                        videoLink.setAttribute('href', videoId || '#video-content');
+                        videoLink.innerHTML = 'Watch Now <i class="fas fa-play"></i>';
+
+                        // Add a special class for key development area videos
+                        if (isKeyArea) {
+                            videoLink.classList.add('key-area-link');
+                        }
+                    }
+                });
+
+                // Hide items beyond the initial count
+                resourceItems.forEach((item, index) => {
+                    if (index >= initialItemsCount) {
+                        item.classList.add('hidden-resources');
+                    }
+                });
+
+                // Only add view more button if there are more than initialItemsCount items
+                if (resourceItems.length > initialItemsCount) {
+                    // Create view more container
+                    const viewMoreContainer = document.createElement('div');
+                    viewMoreContainer.className = 'view-more-container';
+
+                    // Create view more button
+                    const viewMoreBtn = document.createElement('button');
+                    viewMoreBtn.className = 'view-more-btn';
+                    viewMoreBtn.innerHTML = '<i class="fas fa-plus-circle"></i> View More';
+                    viewMoreBtn.setAttribute('data-expanded', 'false');
+
+                    // Add click event to toggle visibility
+                    viewMoreBtn.addEventListener('click', function() {
+                        const isExpanded = this.getAttribute('data-expanded') === 'true';
+                        const hiddenItems = category.querySelectorAll('.hidden-resources');
+
+                        if (!isExpanded) {
+                            // Show hidden items
+                            hiddenItems.forEach(item => {
+                                item.classList.remove('hidden-resources');
+                            });
+                            this.innerHTML = '<i class="fas fa-minus-circle"></i> View Less';
+                            this.setAttribute('data-expanded', 'true');
+                        } else {
+                            // Hide items beyond initial count
+                            resourceItems.forEach((item, index) => {
+                                if (index >= initialItemsCount) {
+                                    item.classList.add('hidden-resources');
+                                }
+                            });
+                            this.innerHTML = '<i class="fas fa-plus-circle"></i> View More';
+                            this.setAttribute('data-expanded', 'false');
+                        }
+                    });
+
+                    // Add button to container and container to category
+                    viewMoreContainer.appendChild(viewMoreBtn);
+                    category.appendChild(viewMoreContainer);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

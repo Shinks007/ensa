@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Mentor | Ensaasmo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .apply-page {
+            padding: 120px 20px 60px;
+            min-height: 100vh;
+            background: var(--light);
+        }
+
+        .apply-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 32, 96, 0.1);
+            padding: 3rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--neon));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .page-header p {
+            color: var(--gray-600);
+            font-size: 1.1rem;
+        }
+
+        .requirements-notice {
+            background: rgba(14, 165, 233, 0.05);
+            border: 1px solid rgba(14, 165, 233, 0.1);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .requirements-notice h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .requirements-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .requirements-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--gray-600);
+        }
+
+        .requirements-list i {
+            color: var(--accent);
+        }
+
+        .application-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 1rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+        }
+
+        .expertise-group {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+        }
+
+        .expertise-group h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .expertise-checkboxes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+
+        .terms-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .terms-check input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 0.2rem;
+        }
+
+        .terms-check label {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--accent), var(--neon));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .apply-container {
+                padding: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .expertise-checkboxes {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html#pricing">Pricing</a>
+            <a href="index.html#assessment">Assessment</a>
+            <a href="index.html#resources">Resources</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="apply-page">
+        <div class="apply-container">
+            <div class="page-header">
+                <h1>Become a Mentor</h1>
+                <p>Join our network of industry experts and help develop future leaders</p>
+            </div>
+
+            <div class="requirements-notice">
+                <h3>Mentor Requirements</h3>
+                <ul class="requirements-list">
+                    <li><i class="fas fa-check"></i> Minimum 5 years professional experience</li>
+                    <li><i class="fas fa-check"></i> Proven track record in your field</li>
+                    <li><i class="fas fa-check"></i> Strong communication & coaching skills</li>
+                    <li><i class="fas fa-check"></i> Commitment to monthly mentoring sessions</li>
+                </ul>
+            </div>
+
+            <form class="application-form" id="mentorForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName">Full Name*</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Professional Email*</label>
+                        <input type="email" id="email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="linkedin">LinkedIn Profile*</label>
+                    <input type="url" id="linkedin" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="industry">Primary Industry*</label>
+                        <select id="industry" required>
+                            <option value="">Select Industry</option>
+                            <option>Technology</option>
+                            <option>Finance</option>
+                            <option>Healthcare</option>
+                            <option>Education</option>
+                            <option>Entrepreneurship</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="experience">Years of Experience*</label>
+                        <input type="number" id="experience" min="5" required>
+                    </div>
+                </div>
+
+                <div class="expertise-group">
+                    <h3>Areas of Expertise*</h3>
+                    <div class="expertise-checkboxes">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="leadership" name="expertise">
+                            <label for="leadership">Leadership Development</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="strategy" name="expertise">
+                            <label for="strategy">Business Strategy</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="finance" name="expertise">
+                            <label for="finance">Financial Management</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="marketing" name="expertise">
+                            <label for="marketing">Marketing & Sales</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="tech" name="expertise">
+                            <label for="tech">Technology & Innovation</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="career" name="expertise">
+                            <label for="career">Career Development</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="bio">Professional Bio*</label>
+                    <textarea id="bio" rows="4" required 
+                        placeholder="Brief overview of your professional background and achievements"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="approach">Mentoring Approach*</label>
+                    <textarea id="approach" rows="4" required
+                        placeholder="Describe your mentoring philosophy and methodology"></textarea>
+                </div>
+
+                <div class="terms-check">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">
+                        I agree to the mentor program terms, including commitment to ethical mentoring practices
+                        and maintaining client confidentiality. I confirm the accuracy of provided information.
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-user-graduate"></i> Submit Application
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+        document.getElementById('mentorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your mentorship application! We will review it and contact you within 5 business days.');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started | Ensaasmo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="payment-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="cyber-grid"></div>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+            </a>
+        </div>
+
+        <!-- Hamburger Menu Button -->
+        <button class="hamburger" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <line x1="4" y1="6" x2="20" y2="6" stroke-width="2" stroke-linecap="round"/>
+                <line x1="4" y1="12" x2="20" y2="12" stroke-width="2" stroke-linecap="round"/>
+                <line x1="4" y1="18" x2="20" y2="18" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </button>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <nav class="mobile-nav">
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#assessment">Assessment</a>
+                <a href="index.html#resources">Resources</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="nav-links">
+            <a href="index.html#pricing">Pricing</a>
+            <a href="index.html#assessment">Assessment</a>
+            <a href="index.html#resources">Resources</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="payment-page">
+        <!-- Floating background elements -->
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+
+        <div class="payment-container">
+            <a href="index.html" class="exit-link">
+                <i class="fas fa-times"></i>
+            </a>
+
+            <div class="payment-header">
+                <h2>Get Started with Your Assessment</h2>
+                <p>Complete your secure payment to begin</p>
+            </div>
+
+            <div class="package-summary">
+                <h3><i class="fas fa-box"></i> Selected Package</h3>
+                <div class="package-details">
+                    <div class="package-name" id="packageName">Loading...</div>
+                    <div class="package-price" id="packagePrice">Loading...</div>
+                </div>
+            </div>
+
+            <form id="paymentForm" class="payment-form">
+                <!-- Hidden fields for package and amount -->
+                <input type="hidden" id="packageInput" name="package" value="">
+                <input type="hidden" id="amountInput" name="amount" value="">
+                <input type="hidden" id="affiliateInput" name="affiliate" value="">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="state">State*</label>
+                    <select id="state" name="state" required>
+                        <option value="" disabled selected>Select your state</option>
+                        <!-- States will be populated by JavaScript -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="lga">Local Government Area*</label>
+                    <select id="lga" name="lga" required>
+                        <option value="" disabled selected>Select your LGA</option>
+                        <!-- LGAs will be populated based on selected state -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+
+                <div class="form-group affiliate-section" style="display: none;">
+                    <label>Referred By:</label>
+                    <div class="affiliate-info">
+                        <i class="fas fa-user-check"></i>
+                        <span id="affiliateName">-</span>
+                    </div>
+                </div>
+
+                <div class="secure-payment-notice">
+                    <i class="fas fa-shield-alt"></i>
+                    <p>Secured by Paystack. Your payment information is encrypted.</p>
+                </div>
+
+                <button type="submit" id="paymentButton" class="payment-button">
+                    <i class="fas fa-lock"></i> Complete Payment
+                </button>
+
+                <div class="payment-separator">
+                    <span>OR</span>
+                </div>
+
+                <button type="button" id="tokenButton" class="token-button">
+                    <i class="fas fa-key"></i> Access with Token
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Paystack JS -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <!-- Nigeria States and LGAs -->
+    <script src="nigeria-states-lgas.js"></script>
+    <!-- Paystack Integration -->
+    <script src="paystack-integration.js"></script>
+</body>
+</html>

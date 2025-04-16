@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessments | Ensaasmo</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .solutions-page {
+            padding: 120px 20px 60px;
+            min-height: 100vh;
+            background: var(--light);
+        }
+
+        .solutions-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--neon));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .assessment-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .assessment-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 32, 96, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .assessment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 32, 96, 0.15);
+        }
+
+        .assessment-card h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .assessment-card p {
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--accent), var(--neon));
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    <header class="navbar">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="../index.html#pricing">Pricing</a>
+            <a href="../index.html#assessment">Assessment</a>
+            <a href="../index.html#resources">Resources</a>
+            <a href="../index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="solutions-page">
+        <div class="solutions-content">
+            <div class="page-header">
+                <h1>Our Assessment Solutions</h1>
+                <p>Comprehensive evaluations tailored to your entrepreneurial journey</p>
+            </div>
+
+            <div class="assessment-types">
+                <div class="assessment-card">
+                    <h3>Individual Assessment</h3>
+                    <p>Personal entrepreneurial potential analysis with detailed insights and recommendations.</p>
+                    <a href="../assessment.html" class="cta-btn">Start Assessment</a>
+                </div>
+
+                <div class="assessment-card">
+                    <h3>Team Assessment</h3>
+                    <p>Evaluate your team's collective strengths and identify growth opportunities.</p>
+                    <a href="../contact.html" class="cta-btn">Contact Us</a>
+                </div>
+
+                <div class="assessment-card">
+                    <h3>Corporate Assessment</h3>
+                    <p>Enterprise-level evaluation for organizations looking to foster entrepreneurial culture.</p>
+                    <a href="../contact.html" class="cta-btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../app.js"></script>
+</body>
+</html>
+

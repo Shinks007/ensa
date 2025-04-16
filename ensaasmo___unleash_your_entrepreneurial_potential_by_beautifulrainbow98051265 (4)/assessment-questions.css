@@ -1,0 +1,583 @@
+/* Premium Assessment Questions Styles */
+:root {
+    --premium-gradient: linear-gradient(135deg, #0c4a6e, #0369a1, #0284c7);
+    --premium-accent: #0ea5e9;
+    --premium-dark: #0f172a;
+    --premium-light: #f8fafc;
+    --premium-card: #ffffff;
+    --premium-shadow: 0 10px 40px rgba(0, 32, 96, 0.12);
+    --premium-glow: 0 0 20px rgba(14, 165, 233, 0.2);
+    --premium-heart: linear-gradient(135deg, #f43f5e, #ec4899);
+}
+
+.question-card {
+    background: white;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 3px solid var(--premium-accent);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.question-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.question-block {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Category indicators (hidden from users but visible in the DOM) */
+.question-block::after {
+    content: '';
+    position: absolute;
+    top: 1.25rem;
+    right: 0;
+    width: 3px;
+    height: 70%;
+    border-radius: 3px;
+    opacity: 0.4;
+}
+
+.question-block:hover {
+    transform: translateX(3px);
+    background-color: rgba(14, 165, 233, 0.02);
+    border-radius: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+}
+
+.question-block:last-child {
+    border-bottom: none;
+}
+
+.question-block h4 {
+    font-size: 1rem;
+    color: var(--premium-dark);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    display: flex;
+    align-items: center;
+}
+
+.question-block h4::before {
+    content: attr(data-number);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    background-color: var(--premium-accent);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    margin-right: 0.75rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2);
+}
+
+.question-block p {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    padding-left: 2rem;
+}
+
+/* Question Rating Scale */
+.question-rating-scale {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding: 1rem 1.25rem;
+    background: #f8fafc;
+    border-radius: 0.75rem;
+    position: relative;
+    margin-left: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(14, 165, 233, 0.1);
+}
+
+.question-rating-scale::after {
+    content: 'Rate your skill level';
+    position: absolute;
+    top: -22px;
+    left: 0;
+    font-size: 0.8rem;
+    color: #475569;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.question-rating-scale label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+}
+
+.question-rating-scale label::after {
+    content: attr(data-label);
+    font-size: 0.7rem;
+    color: #475569;
+    margin-top: 0.4rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+    position: absolute;
+    bottom: -18px;
+    white-space: nowrap;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.question-rating-scale label:nth-child(1)::after { content: 'Novice'; color: #ef4444; }
+.question-rating-scale label:nth-child(2)::after { content: 'Developing'; color: #f97316; }
+.question-rating-scale label:nth-child(3)::after { content: 'Competent'; color: #f59e0b; }
+.question-rating-scale label:nth-child(4)::after { content: 'Proficient'; color: #10b981; }
+.question-rating-scale label:nth-child(5)::after { content: 'Expert'; color: #0ea5e9; }
+
+.question-rating-scale label:hover::after {
+    opacity: 1;
+    transform: translateY(2px);
+}
+
+.question-rating-scale input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.question-rating-scale span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid rgba(14, 165, 233, 0.2);
+    color: #475569;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.question-rating-scale span::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+/* Apply the same colors as the rating guide */
+.question-rating-scale label:nth-child(1):hover span { background-color: rgba(239, 68, 68, 0.1); border-color: #ef4444; color: #ef4444; }
+.question-rating-scale label:nth-child(2):hover span { background-color: rgba(249, 115, 22, 0.1); border-color: #f97316; color: #f97316; }
+.question-rating-scale label:nth-child(3):hover span { background-color: rgba(245, 158, 11, 0.1); border-color: #f59e0b; color: #f59e0b; }
+.question-rating-scale label:nth-child(4):hover span { background-color: rgba(16, 185, 129, 0.1); border-color: #10b981; color: #10b981; }
+.question-rating-scale label:nth-child(5):hover span { background-color: rgba(14, 165, 233, 0.1); border-color: #0ea5e9; color: #0ea5e9; }
+
+.question-rating-scale label:hover span::before {
+    opacity: 1;
+    box-shadow: 0 0 0 2px currentColor;
+}
+
+.question-rating-scale input:checked + span {
+    color: white;
+    transform: scale(1.1);
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Apply the same colors for selected ratings */
+.question-rating-scale label:nth-child(1) input:checked + span { background-color: #ef4444; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); }
+.question-rating-scale label:nth-child(2) input:checked + span { background-color: #f97316; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3); }
+.question-rating-scale label:nth-child(3) input:checked + span { background-color: #f59e0b; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); }
+.question-rating-scale label:nth-child(4) input:checked + span { background-color: #10b981; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
+.question-rating-scale label:nth-child(5) input:checked + span { background-color: #0ea5e9; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3); }
+
+.question-rating-scale label:hover span {
+    transform: translateY(-3px);
+}
+
+/* Highlight required animation */
+.question-rating-scale.highlight-required {
+    animation: pulse-highlight 1.5s ease infinite;
+    border: 2px solid #ef4444;
+    background-color: rgba(239, 68, 68, 0.05);
+}
+
+.question-rating-scale.highlight-required::after {
+    color: #ef4444;
+    font-weight: 700;
+    content: 'Please rate this skill';
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 5px rgba(239, 68, 68, 0.2);
+}
+
+.question-rating-scale.highlight-required span {
+    animation: wiggle 0.5s ease;
+}
+
+@keyframes pulse-highlight {
+    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
+}
+
+/* Unanswered question highlighting */
+.question-block.unanswered {
+    background-color: rgba(254, 226, 226, 0.3);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+    padding: 1.25rem 1rem;
+    margin: 0 -1rem 1rem;
+    animation: pulse 1.5s infinite;
+}
+
+.question-block.unanswered h4::before {
+    background: linear-gradient(135deg, #ef4444, #f87171);
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+    70% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* Assessment Hero Section */
+.assessment-hero {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    background: linear-gradient(135deg, rgba(12, 74, 110, 0.03) 0%, rgba(3, 105, 161, 0.05) 50%, rgba(2, 132, 199, 0.03) 100%);
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.assessment-hero::before,
+.assessment-hero::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, rgba(14, 165, 233, 0) 70%);
+    z-index: 0;
+}
+
+.assessment-hero::before {
+    top: -150px;
+    left: -150px;
+}
+
+.assessment-hero::after {
+    bottom: -150px;
+    right: -150px;
+}
+
+.assessment-header {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.assessment-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--premium-dark);
+    margin-bottom: 1.5rem;
+    background: var(--premium-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    text-shadow: 0 5px 15px rgba(3, 105, 161, 0.1);
+    letter-spacing: -0.5px;
+}
+
+/* Honesty Section Styles */
+.honesty-section {
+    margin-bottom: 2rem;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.honesty-content {
+    background: var(--premium-light);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: var(--premium-shadow);
+    border: 1px solid rgba(14, 165, 233, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.honesty-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--premium-heart);
+}
+
+.honesty-content h2 {
+    font-size: 1.5rem;
+    color: var(--premium-dark);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.honesty-content h2 i {
+    font-size: 1.25rem;
+    background: var(--premium-heart);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: pulse 1.5s infinite;
+}
+
+.honesty-content p {
+    color: #475569;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.honesty-content p:last-child {
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 0;
+}
+
+/* Rating Instructions Styles */
+.rating-instructions {
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+    animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+.rating-scale {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    background: white;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.scale-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.scale-item:hover {
+    transform: translateY(-3px);
+}
+
+.scale-number {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.scale-number::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.scale-item:hover .scale-number {
+    transform: scale(1.15);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.scale-item:hover .scale-number::after {
+    border-color: currentColor;
+}
+
+.scale-item[data-value="1"] .scale-number { background-color: #ef4444; }
+.scale-item[data-value="1"]:hover .scale-number::after { border-color: #ef4444; }
+
+.scale-item[data-value="2"] .scale-number { background-color: #f97316; }
+.scale-item[data-value="2"]:hover .scale-number::after { border-color: #f97316; }
+
+.scale-item[data-value="3"] .scale-number { background-color: #f59e0b; }
+.scale-item[data-value="3"]:hover .scale-number::after { border-color: #f59e0b; }
+
+.scale-item[data-value="4"] .scale-number { background-color: #10b981; }
+.scale-item[data-value="4"]:hover .scale-number::after { border-color: #10b981; }
+
+.scale-item[data-value="5"] .scale-number { background-color: #0ea5e9; }
+.scale-item[data-value="5"]:hover .scale-number::after { border-color: #0ea5e9; }
+
+.scale-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #334155;
+    margin-top: 0.25rem;
+    transition: all 0.3s ease;
+}
+
+.scale-item:hover .scale-label {
+    transform: translateY(2px);
+}
+
+.scale-item[data-value="1"]:hover .scale-label { color: #ef4444; }
+.scale-item[data-value="2"]:hover .scale-label { color: #f97316; }
+.scale-item[data-value="3"]:hover .scale-label { color: #f59e0b; }
+.scale-item[data-value="4"]:hover .scale-label { color: #10b981; }
+.scale-item[data-value="5"]:hover .scale-label { color: #0ea5e9; }
+
+.rating-instruction-text {
+    color: #334155;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.6;
+    padding: 0.75rem 1.5rem;
+    background-color: rgba(14, 165, 233, 0.08);
+    border-radius: 0.5rem;
+    display: inline-block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 800px;
+    border-left: 4px solid var(--premium-accent);
+}
+
+/* Assessment Start Section */
+.assessment-start-section {
+    background: linear-gradient(135deg, #0c4a6e, #0369a1, #0284c7);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: white;
+    box-shadow: var(--premium-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.assessment-start-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB4PSIwIiB5PSIwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgzMCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+    opacity: 0.5;
+}
+
+.start-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.start-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.assessment-start-section h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.assessment-start-section p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Category color coding (visible in DOM but not obvious to users) */
+.question-block[data-category="Sales & Marketing"]::after { background: #0ea5e9; }
+.question-block[data-category="Financial"]::after { background: #10b981; }
+.question-block[data-category="Innovation"]::after { background: #8b5cf6; }
+.question-block[data-category="Leadership"]::after { background: #f59e0b; }
+.question-block[data-category="Personal"]::after { background: #ef4444; }
+.question-block[data-category="Communication"]::after { background: #06b6d4; }
+.question-block[data-category="Customer"]::after { background: #ec4899; }
+.question-block[data-category="Strategic"]::after { background: #6366f1; }
+.question-block[data-category="Technical"]::after { background: #475569; }
+.question-block[data-category="Management"]::after { background: #0f766e; }

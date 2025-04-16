@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful | Ensaasmo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assessment-styles.css">
+    <style>
+        .success-container {
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 600px;
+            margin: 100px auto;
+            background: white;
+            backdrop-filter: blur(20px);
+            border-radius: 1rem;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 32, 96, 0.15);
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            animation: checkmark 0.8s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+
+        .success-message {
+            margin-bottom: 2.5rem;
+        }
+
+        .success-message h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--neon));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .success-message p {
+            color: var(--gray-600);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .reference-number {
+            background: rgba(14, 165, 233, 0.05);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+            font-family: monospace;
+            font-size: 1.1rem;
+            color: var(--dark);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .get-started-btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--accent), var(--neon));
+            color: white;
+            border-radius: 0.75rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
+        }
+
+        .get-started-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(14, 165, 233, 0.3);
+        }
+
+        .success-details {
+            background: rgba(14, 165, 233, 0.05);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
+        .detail-value {
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        @keyframes checkmark {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+            </a>
+        </div>
+
+        <!-- Hamburger Menu Button -->
+        <button class="hamburger" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <line x1="4" y1="6" x2="20" y2="6" stroke-width="2" stroke-linecap="round"/>
+                <line x1="4" y1="12" x2="20" y2="12" stroke-width="2" stroke-linecap="round"/>
+                <line x1="4" y1="18" x2="20" y2="18" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </button>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <nav class="mobile-nav">
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#assessment">Assessment</a>
+                <a href="index.html#resources">Resources</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="nav-links">
+            <a href="index.html#pricing">Pricing</a>
+            <a href="index.html#assessment">Assessment</a>
+            <a href="index.html#resources">Resources</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="assessment-flow">
+        <div class="success-container">
+            <div class="success-icon">✓</div>
+            <div class="success-message">
+                <h2>Payment Successful!</h2>
+                <p style="color: black;">Thank you for your payment. Your assessment package has been activated.</p>
+                <p style="color: black;">You will receive an email shortly with further instructions.</p>
+
+                <div class="success-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Package Type:</span>
+                        <span class="detail-value" id="packageType">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Amount Paid:</span>
+                        <span class="detail-value" id="amountPaid">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Full Name:</span>
+                        <span class="detail-value" id="fullName">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Email:</span>
+                        <span class="detail-value" id="email">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">State:</span>
+                        <span class="detail-value" id="state">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Local Government Area:</span>
+                        <span class="detail-value" id="lga">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Phone Number:</span>
+                        <span class="detail-value" id="phone">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Reference Number:</span>
+                        <span class="detail-value" id="referenceNumber">-</span>
+                    </div>
+                    <div class="detail-row pvc-details" style="display: none;">
+                        <span class="detail-label">PVC ID:</span>
+                        <span class="detail-value" id="pvcId">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Transaction Date:</span>
+                        <span class="detail-value" id="transactionDate">-</span>
+                    </div>
+                </div>
+            </div>
+            <a href="start-assessment.html" class="get-started-btn">
+                <i class="fas fa-rocket"></i> Start Now
+            </a>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="package-info.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get URL parameters and stored form data
+            const urlParams = new URLSearchParams(window.location.search);
+            const formData = JSON.parse(sessionStorage.getItem('paymentFormData') || '{}');
+            const reference = urlParams.get('reference');
+
+            // Show loading state
+            const successMessage = document.querySelector('.success-message p');
+            if (successMessage) {
+                successMessage.innerHTML = 'Verifying your payment...<br>Please wait a moment.';
+            }
+
+            // Handle PVC ID display if payment was made using token
+            const pvcDetails = document.querySelector('.pvc-details');
+            if (reference && reference.startsWith('PVC-')) {
+                // For PVC token payments, no need to verify with Paystack
+                pvcDetails.style.display = 'flex';
+                document.getElementById('pvcId').textContent = reference.replace('PVC-', '');
+                updateSuccessPage(formData, reference);
+            } else if (reference) {
+                // For regular payments, verify with Paystack
+                verifyPayment(reference, formData);
+            } else {
+                // No reference found
+                successMessage.innerHTML = 'Error: No payment reference found.<br>Please contact support if you believe this is an error.';
+            }
+        });
+
+        function verifyPayment(reference, formData) {
+            // Verify payment with our server
+            fetch(`verify-transaction.php?reference=${reference}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        // Payment verified successfully
+                        updateSuccessPage(formData, reference, data);
+                    } else {
+                        // Payment verification failed
+                        const successMessage = document.querySelector('.success-message p');
+                        if (successMessage) {
+                            successMessage.innerHTML = 'Payment verification failed.<br>Please contact support with your reference number.';
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error verifying payment:', error);
+                    // If verification fails, still show the page with stored data
+                    updateSuccessPage(formData, reference);
+                });
+        }
+
+        function updateSuccessPage(formData, reference, verificationData = null) {
+            // Update all fields in the success page
+            const packageName = formData.package || '-';
+            document.getElementById('packageType').textContent = packageName;
+            document.getElementById('amountPaid').textContent = formData.amount ? `₦${Number(formData.amount).toLocaleString()}` : '-';
+            document.getElementById('fullName').textContent = formData.fullName || '-';
+            document.getElementById('email').textContent = formData.email || '-';
+            document.getElementById('state').textContent = formData.state || '-';
+            document.getElementById('lga').textContent = formData.lga || '-';
+            document.getElementById('phone').textContent = formData.phone || '-';
+            document.getElementById('referenceNumber').textContent = reference || '-';
+            document.getElementById('transactionDate').textContent = verificationData?.data?.paid_at || new Date().toLocaleString();
+
+            // Update success message
+            const successMessage = document.querySelector('.success-message p');
+            if (successMessage) {
+                successMessage.innerHTML = 'Thank you for your payment. Your assessment package has been activated.<br>You will receive an email shortly with further instructions.';
+            }
+
+            // Store package information
+            if (packageName !== '-') {
+                // Store the package info using our package-info.js function
+                const packageInfo = storePackageInfo(packageName);
+                console.log('Package info stored:', packageInfo);
+
+                // Store user information
+                const userInfo = {
+                    fullName: formData.fullName || 'Aspiring Entrepreneur',
+                    email: formData.email || '',
+                    phone: formData.phone || '',
+                    state: formData.state || '',
+                    lga: formData.lga || ''
+                };
+                storeUserInfo(userInfo);
+                console.log('User info stored:', userInfo);
+            }
+
+            // Clear stored form data
+            sessionStorage.removeItem('paymentFormData');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Package Inquiry | Ensaasmo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="contact-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+            </a>
+        </div>
+        
+        <!-- Hamburger Menu Button -->
+        <button class="hamburger" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <line x1="4" y1="6" x2="20" y2="6" stroke-width="2" stroke-linecap="round"/>
+                <line x1="4" y1="12" x2="20" y2="12" stroke-width="2" stroke-linecap="round"/>
+                <line x1="4" y1="18" x2="20" y2="18" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </button>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <nav class="mobile-nav">
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#assessment">Assessment</a>
+                <a href="index.html#resources">Resources</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="nav-links">
+            <a href="index.html#pricing">Pricing</a>
+            <a href="index.html#assessment">Assessment</a>
+            <a href="index.html#resources">Resources</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="contact-page">
+        <div class="contact-container">
+            <a href="index.html#pricing" class="exit-link">
+                <i class="fas fa-times"></i>
+            </a>
+            
+            <div class="contact-header">
+                <h2>Become an Affiliate</h2>
+                <p>Fill the form below to join our affiliate program</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <i class="fas fa-badge-percent"></i>
+                    <h3>Competitive Commission</h3>
+                    <p>Earn industry-leading commissions on every successful referral</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-tools"></i>
+                    <h3>Marketing Resources</h3>
+                    <p>Access promotional materials and tracking tools</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Real-time Analytics</h3>
+                    <p>Track your performance and earnings in real-time</p>
+                </div>
+            </div>
+
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="fullName">Full Name*</label>
+                    <input type="text" id="fullName" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address*</label>
+                        <input type="email" id="email" placeholder="Your email address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number*</label>
+                        <input type="tel" id="phone" placeholder="Your phone number" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="experience">Relevant Experience*</label>
+                    <textarea id="experience" rows="4" placeholder="Describe your experience in entrepreneurship, business coaching, or related fields" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="promotion">How will you promote Ensaasmo?*</label>
+                    <textarea id="promotion" rows="4" placeholder="Describe your marketing strategy and channels" required></textarea>
+                </div>
+
+                <div class="form-notice">
+                    <i class="fas fa-shield-alt"></i>
+                    <p>Your information is secure and will only be used to evaluate your application.</p>
+                </div>
+
+                <button type="submit" class="submit-button">
+                    <i class="fas fa-paper-plane"></i> Generate my Affiliate Website/Blog URL
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html>

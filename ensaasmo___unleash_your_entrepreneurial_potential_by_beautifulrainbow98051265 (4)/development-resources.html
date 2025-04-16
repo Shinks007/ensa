@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development Resources | ENSAASMO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --premium-gradient: linear-gradient(135deg, #0c4a6e, #0369a1, #0284c7);
+            --premium-accent: #0ea5e9;
+            --premium-dark: #0f172a;
+            --premium-light: #f8fafc;
+            --premium-card: #ffffff;
+            --premium-shadow: 0 10px 40px rgba(0, 32, 96, 0.12);
+            --premium-glow: 0 0 20px rgba(14, 165, 233, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f1f5f9;
+            color: #334155;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background-color: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            color: #334155;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+            color: var(--premium-accent);
+            background: linear-gradient(to right, rgba(14, 165, 233, 0.05), rgba(3, 105, 161, 0.05));
+            border-color: rgba(14, 165, 233, 0.2);
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--premium-dark);
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            background: var(--premium-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .package-info {
+            background-color: rgba(14, 165, 233, 0.08);
+            border-left: 4px solid var(--premium-accent);
+            padding: 0.75rem 1rem;
+            margin: 1rem auto;
+            border-radius: 0.5rem;
+            max-width: 700px;
+            color: #334155;
+            font-size: 1rem;
+        }
+
+        .package-info strong {
+            color: var(--premium-accent);
+        }
+
+        .key-areas-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .key-area-btn {
+            display: inline-block;
+            padding: 0.75rem 1.25rem;
+            background: #121212;
+            color: white;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .key-area-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+            background: var(--premium-gradient);
+        }
+
+        .key-area-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .resources-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .development-area {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--premium-shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .development-area:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 32, 96, 0.15);
+        }
+
+        .area-header {
+            background: var(--premium-gradient);
+            color: white;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .area-header h2 {
+            font-size: 1.5rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .area-header p {
+            margin: 0.5rem 0 0;
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .area-content {
+            padding: 1.5rem;
+        }
+
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .resource-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .resource-item:last-child {
+            border-bottom: none;
+        }
+
+        .resource-item:hover {
+            background-color: rgba(14, 165, 233, 0.05);
+            transform: translateX(5px);
+        }
+
+        .resource-icon {
+            color: var(--premium-accent);
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            background: rgba(14, 165, 233, 0.1);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .resource-info {
+            flex: 1;
+        }
+
+        .resource-info h3 {
+            font-size: 1.1rem;
+            color: var(--premium-dark);
+            margin: 0 0 0.25rem 0;
+            font-weight: 600;
+        }
+
+        .resource-info p {
+            color: #64748b;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .resource-action {
+            margin-left: 1rem;
+        }
+
+        .resource-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            background: var(--premium-gradient);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .resource-btn:hover {
+            box-shadow: var(--premium-glow);
+            transform: translateY(-2px);
+        }
+
+        .resource-btn i {
+            margin-right: 0.5rem;
+        }
+
+        .skill-level {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .beginner {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .intermediate {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+
+        .advanced {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .action-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .all-resources-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--premium-gradient);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .all-resources-btn:hover {
+            box-shadow: var(--premium-glow);
+            transform: translateY(-3px);
+        }
+
+        .no-areas {
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--premium-shadow);
+        }
+
+        .no-areas i {
+            font-size: 3rem;
+            color: var(--premium-accent);
+            margin-bottom: 1rem;
+        }
+
+        .no-areas h2 {
+            font-size: 1.5rem;
+            color: var(--premium-dark);
+            margin-bottom: 1rem;
+        }
+
+        .no-areas p {
+            color: #64748b;
+            max-width: 500px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .assessment-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--premium-gradient);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .assessment-btn:hover {
+            box-shadow: var(--premium-glow);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .key-areas-buttons {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.5rem;
+                margin: 1rem 0;
+            }
+
+            .key-area-btn {
+                text-align: center;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            .area-header {
+                padding: 1.25rem;
+            }
+
+            .area-header h2 {
+                font-size: 1.25rem;
+            }
+
+            .area-content {
+                padding: 1.25rem;
+            }
+
+            .resource-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .resource-icon {
+                margin-bottom: 0.75rem;
+                margin-right: 0;
+            }
+
+            .resource-action {
+                margin-left: 0;
+                margin-top: 1rem;
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="assessment-results.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Assessment Results
+        </a>
+
+        <div class="page-header">
+            <h1>Development Resources</h1>
+            <p>Personalized learning materials to help you improve in your key development areas</p>
+        </div>
+
+        <div class="resources-container" id="resourcesContainer">
+            <!-- Resources will be dynamically loaded here -->
+        </div>
+
+        <div class="action-container">
+            <a href="resources/learning-materials.html" class="all-resources-btn">
+                <i class="fas fa-book"></i> View All Learning Resources
+            </a>
+        </div>
+    </div>
+
+    <script src="package-info.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const resourcesContainer = document.getElementById('resourcesContainer');
+
+            // Get assessment results from session storage
+            const resultsJSON = sessionStorage.getItem('assessmentResults');
+
+            if (!resultsJSON) {
+                // No assessment results found
+                resourcesContainer.innerHTML = `
+                    <div class="no-areas">
+                        <i class="fas fa-clipboard-check"></i>
+                        <h2>No Development Areas Found</h2>
+                        <p>It looks like you haven't completed the Entrepreneurial Strength Assessment yet. Complete the assessment to get personalized development resources.</p>
+                        <a href="assessment.html" class="assessment-btn">
+                            <i class="fas fa-chart-bar"></i> Take the Assessment
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+
+            const results = JSON.parse(resultsJSON);
+
+            // Get the number of development areas based on the package
+            let numDevelopmentAreas = 3; // Default to 3 for Foundation package
+
+            // Try to get package info
+            try {
+                // Get the package info from the package-info.js function
+                const packageInfo = getPackageInfo();
+                numDevelopmentAreas = packageInfo.keyDevelopmentAreas;
+
+                // Add a message about the package to the header
+                const packageMessage = document.createElement('p');
+                packageMessage.className = 'package-info';
+                packageMessage.innerHTML = `Your <strong>${packageInfo.name}</strong> gives you access to <strong>${numDevelopmentAreas}</strong> key development areas.`;
+                document.querySelector('.page-header p').after(packageMessage);
+
+                console.log(`Showing ${numDevelopmentAreas} development areas based on ${packageInfo.name}`);
+            } catch (error) {
+                console.error('Error getting package info:', error);
+                // Fall back to default of 3 areas
+            }
+
+            // Get the weakest categories based on package
+            const weakestCategories = [...results.categories]
+                .sort((a, b) => a.percentage - b.percentage)
+                .slice(0, numDevelopmentAreas);
+
+            // Store the key development areas in session storage for use in learning resources
+            const keyDevelopmentAreas = weakestCategories.map(category => category.name);
+            sessionStorage.setItem('keyDevelopmentAreas', JSON.stringify(keyDevelopmentAreas));
+            console.log('Stored key development areas:', keyDevelopmentAreas);
+
+            // Key area buttons have been removed as requested
+            // We still keep the key development areas in session storage for use in learning resources
+
+            if (weakestCategories.length === 0) {
+                resourcesContainer.innerHTML = `
+                    <div class="no-areas">
+                        <i class="fas fa-clipboard-check"></i>
+                        <h2>No Development Areas Found</h2>
+                        <p>We couldn't identify any specific development areas from your assessment. Please retake the assessment or contact support for assistance.</p>
+                        <a href="assessment.html" class="assessment-btn">
+                            <i class="fas fa-chart-bar"></i> Retake the Assessment
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+
+            // Define resources for each category
+            const categoryResources = {
+                "Sales & Marketing Skills": [
+                    {
+                        icon: "fas fa-book",
+                        title: "Building a StoryBrand",
+                        description: "Learn how to clarify your message so customers will listen",
+                        link: "resources/learning-materials.html#Sales & Marketing Expertise"
+                    },
+                    {
+                        icon: "fas fa-video",
+                        title: "Digital Marketing Fundamentals",
+                        description: "Master the basics of online marketing strategies",
+                        link: "resources/video-tutorials.html"
+                    },
+                    {
+                        icon: "fas fa-file-alt",
+                        title: "Sales Conversion Guide",
+                        description: "Techniques to improve your sales conversion rates",
+                        link: "resources/learning-materials.html#Sales & Marketing Expertise"
+                    }
+                ],
+                "Financial Skills": [
+                    {
+                        icon: "fas fa-book",
+                        title: "Financial Intelligence for Entrepreneurs",
+                        description: "Essential financial concepts every business owner should know",
+                        link: "resources/learning-materials.html#Financial Management"
+                    },
+                    {
+                        icon: "fas fa-calculator",
+                        title: "Business Budgeting Workshop",
+                        description: "Learn how to create and manage effective business budgets",
+                        link: "resources/video-tutorials.html"
+                    },
+                    {
+                        icon: "fas fa-chart-line",
+                        title: "Investment Analysis Framework",
+                        description: "Tools for evaluating business investments and opportunities",
+                        link: "resources/learning-materials.html#Financial Management"
+                    }
+                ],
+                "Intangible Skills": [
+                    {
+                        icon: "fas fa-book",
+                        title: "Emotional Intelligence in Business",
+                        description: "Develop your EQ to enhance leadership and decision-making",
+                        link: "resources/learning-materials.html#Intangible Skills"
+                    },
+                    {
+                        icon: "fas fa-brain",
+                        title: "Strategic Thinking Masterclass",
+                        description: "Frameworks for developing strategic business insights",
+                        link: "resources/video-tutorials.html"
+                    },
+                    {
+                        icon: "fas fa-puzzle-piece",
+                        title: "Problem-Solving Techniques",
+                        description: "Methodologies for tackling complex business challenges",
+                        link: "resources/learning-materials.html#Intangible Skills"
+                    }
+                ],
+                "Personal Skills": [
+                    {
+                        icon: "fas fa-book",
+                        title: "The 7 Habits of Highly Effective People",
+                        description: "Principles for personal and professional effectiveness",
+                        link: "resources/learning-materials.html#Personal Development"
+                    },
+                    {
+                        icon: "fas fa-clock",
+                        title: "Time Management for Entrepreneurs",
+                        description: "Strategies to maximize productivity and focus",
+                        link: "resources/video-tutorials.html"
+                    },
+                    {
+                        icon: "fas fa-tasks",
+                        title: "Goal Setting Framework",
+                        description: "Techniques for setting and achieving meaningful goals",
+                        link: "resources/learning-materials.html#Personal Development"
+                    }
+                ],
+                "Communication & Collaboration Skills": [
+                    {
+                        icon: "fas fa-book",
+                        title: "Crucial Conversations",
+                        description: "Tools for talking when stakes are high",
+                        link: "resources/learning-materials.html#Communication & Collaboration"
+                    },
+                    {
+                        icon: "fas fa-users",
+                        title: "Team Leadership Workshop",
+                        description: "Building and leading high-performing teams",
+                        link: "resources/video-tutorials.html"
+                    },
+                    {
+                        icon: "fas fa-comments",
+                        title: "Effective Business Communication",
+                        description: "Principles for clear and persuasive communication",
+                        link: "resources/learning-materials.html#Communication & Collaboration"
+                    }
+                ],
+                "Design Thinking Skills": [
+                    {
+                        icon: "fas fa-book",
+                        title: "Design Thinking for Business Innovation",
+                        description: "Human-centered approach to problem-solving and innovation",
+                        link: "resources/learning-materials.html#Design Thinking"
+                    },
+                    {
+                        icon: "fas fa-lightbulb",
+                        title: "Creative Problem-Solving Workshop",
+                        description: "Techniques to generate innovative business solutions",
+                        link: "resources/video-tutorials.html"
+                    },
+                    {
+                        icon: "fas fa-pen-fancy",
+                        title: "Prototyping and Testing Guide",
+                        description: "Methods for rapidly testing business ideas",
+                        link: "resources/learning-materials.html#Design Thinking"
+                    }
+                ],
+                "Administrative & Operational Skills": [
+                    {
+                        icon: "fas fa-book",
+                        title: "Operations Management Fundamentals",
+                        description: "Core principles for efficient business operations",
+                        link: "resources/learning-materials.html#Administrative & Operational"
+                    },
+                    {
+                        icon: "fas fa-cogs",
+                        title: "Business Process Optimization",
+                        description: "Techniques for streamlining workflows and systems",
+                        link: "resources/video-tutorials.html"
+                    },
+                    {
+                        icon: "fas fa-chart-pie",
+                        title: "Project Management Essentials",
+                        description: "Tools and methodologies for managing business projects",
+                        link: "resources/learning-materials.html#Administrative & Operational"
+                    }
+                ]
+            };
+
+            // Generate HTML for each development area
+            weakestCategories.forEach(category => {
+                // Determine skill level based on score
+                let skillLevel = 'beginner';
+                let skillLevelText = 'Beginner';
+
+                if (category.score >= category.thresholds.medium) {
+                    skillLevel = 'advanced';
+                    skillLevelText = 'Advanced';
+                } else if (category.score >= category.thresholds.low) {
+                    skillLevel = 'intermediate';
+                    skillLevelText = 'Intermediate';
+                }
+
+                // Get resources for this category
+                const resources = categoryResources[category.name] || [];
+
+                // Create HTML for this development area
+                const areaHTML = `
+                    <div class="development-area">
+                        <div class="area-header">
+                            <h2>${category.name}</h2>
+                            <p>${category.assessment}</p>
+                            <span class="skill-level ${skillLevel}">${skillLevelText}</span>
+                        </div>
+                        <div class="area-content">
+                            <ul class="resource-list">
+                                ${resources.map(resource => `
+                                    <li class="resource-item">
+                                        <div class="resource-icon">
+                                            <i class="${resource.icon}"></i>
+                                        </div>
+                                        <div class="resource-info">
+                                            <h3>${resource.title}</h3>
+                                            <p>${resource.description}</p>
+                                        </div>
+                                        <div class="resource-action">
+                                            <a href="${resource.link}?keyArea=true" class="resource-btn">
+                                                <i class="fas fa-external-link-alt"></i> Access
+                                            </a>
+                                        </div>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+
+                resourcesContainer.innerHTML += areaHTML;
+            });
+
+            // Add event listeners for resource items
+            document.querySelectorAll('.resource-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    // Prevent default only if the click wasn't on the button
+                    if (!e.target.closest('.resource-btn')) {
+                        e.preventDefault();
+                        // Find and click the button in this item
+                        const btn = this.querySelector('.resource-btn');
+                        if (btn) {
+                            btn.click();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

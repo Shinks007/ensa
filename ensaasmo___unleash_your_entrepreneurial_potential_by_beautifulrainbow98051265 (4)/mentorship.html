@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Mentorship | Ensaasmo</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .mentorship-container {
+            max-width: 1400px;
+            margin: 120px auto 60px;
+            padding: 2rem;
+        }
+
+        .mentorship-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 0 2rem;
+        }
+
+        .mentorship-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--accent), var(--neon));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            margin-bottom: 3rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) #f1f5f9;
+        }
+
+        .category-tabs::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .category-tabs::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        .category-tabs::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .tab-button {
+            padding: 1rem 2rem;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 2rem;
+            font-weight: 600;
+            color: #64748b;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.2);
+        }
+
+        .mentor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+
+        .enterprise-card {
+            width: 400px;
+            height: 500px;
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(14, 165, 233, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 32, 96, 0.08);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .enterprise-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 32, 96, 0.15);
+            border-color: var(--accent);
+        }
+
+        .mentor-header {
+            padding: 2.5rem;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.05), transparent);
+        }
+
+        .mentor-photo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            background: rgba(14, 165, 233, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--accent);
+        }
+
+        .mentor-photo i {
+            font-size: 4rem;
+            color: var(--accent);
+            opacity: 0.9;
+        }
+
+        .mentor-details {
+            padding: 2.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .mentor-name {
+            font-size: 2.2rem;
+            color: var(--dark);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .mentor-title {
+            color: var(--accent);
+            font-size: 1.5rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .expertise-item {
+            padding: 1.5rem;
+            background: rgba(14, 165, 233, 0.05);
+            border-radius: 1rem;
+            text-align: center;
+            border: 1px solid rgba(14, 165, 233, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .expertise-item:hover {
+            background: rgba(14, 165, 233, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .expertise-item i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .expertise-item span {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .price-section {
+            text-align: center;
+            margin-top: auto;
+            padding: 2.5rem;
+            border-top: 1px solid rgba(14, 165, 233, 0.1);
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.02), transparent);
+        }
+
+        .session-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin: 1rem 0 1.5rem;
+            display: block;
+        }
+
+        .session-price small {
+            font-size: 1.5rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .book-now-btn {
+            width: 100%;
+            padding: 1.5rem;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, var(--accent), var(--neon));
+            color: white;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.2);
+        }
+
+        .book-now-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(14, 165, 233, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .enterprise-card {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-grid"></div>
+    
+    <header class="navbar">
+        <div class="logo">
+            <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+        </div>
+        <nav class="nav-links">
+            <a href="../index.html#pricing">Pricing</a>
+            <a href="../index.html#assessment">Assessment</a>
+            <a href="../index.html#resources">Resources</a>
+            <a href="../index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="mentorship-container">
+        <a href="../index.html#resources" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Resources
+        </a>
+
+        <div class="mentorship-header">
+            <h1>1-1 Mentorship Program</h1>
+            <p>Premium 1-on-1 guidance with industry-leading experts in key domains</p>
+        </div>
+
+        <div class="category-tabs">
+            <button class="tab-button active" data-tab="sales">Sales & Marketing</button>
+            <button class="tab-button" data-tab="finance">Financial Management</button>
+            <button class="tab-button" data-tab="intangible">Intangible Skills</button>
+            <button class="tab-button" data-tab="personal">Personal Growth</button>
+            <button class="tab-button" data-tab="communication">Communication</button>
+            <button class="tab-button" data-tab="design">Design Thinking</button>
+            <button class="tab-button" data-tab="operations">Operations</button>
+        </div>
+
+        <!-- Sales & Marketing Mentors -->
+        <div class="mentor-grid" id="sales">
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Damilola Adekoya</h3>
+                    <p class="mentor-title">Digital Strategy Expert</p>
+
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-crosshairs"></i>
+                            <span>Market Penetration</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-chess-queen"></i>
+                            <span>Brand Strategy</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Revenue Growth</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price-section">
+                    <span class="session-price">₦25,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Sarah Johnson</h3>
+                    <p class="mentor-title">Marketing Analytics Specialist</p>
+
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Digital Marketing</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-table"></i>
+                            <span>Data Analytics</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Campaign Strategy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price-section">
+                    <span class="session-price">₦22,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Amara Nwankwo</h3>
+                    <p class="mentor-title">Digital Marketing Strategist</p>
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-hashtag"></i>
+                            <span>Social Media Strategy</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Campaign Analytics</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-funnel-dollar"></i>
+                            <span>Lead Generation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-section">
+                    <span class="session-price">₦28,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Kunle Adebayo</h3>
+                    <p class="mentor-title">Brand Strategy Consultant</p>
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-bullseye"></i>
+                            <span>Brand Positioning</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-palette"></i>
+                            <span>Visual Identity</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-users"></i>
+                            <span>Audience Engagement</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-section">
+                    <span class="session-price">₦32,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Zainab Alabi</h3>
+                    <p class="mentor-title">Customer Acquisition Specialist</p>
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-funnel-dollar"></i>
+                            <span>Sales Funnels</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-percentage"></i>
+                            <span>Conversion Optimization</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>ROI Maximization</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-section">
+                    <span class="session-price">₦26,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Rebecca Thompson</h3>
+                    <p class="mentor-title">Growth Marketing Consultant</p>
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-search"></i>
+                            <span>SEO Strategy</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-ad"></i>
+                            <span>PPC Advertising</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Conversion Rate Optimization</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-section">
+                    <span class="session-price">₦24,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Emmanuel Okonkwo</h3>
+                    <p class="mentor-title">B2B Sales Specialist</p>
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-handshake"></i>
+                            <span>Client Acquisition</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-comments-dollar"></i>
+                            <span>Sales Negotiation</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-users"></i>
+                            <span>Account Management</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-section">
+                    <span class="session-price">₦27,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Victoria Ademola</h3>
+                    <p class="mentor-title">Content Marketing Expert</p>
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-pencil-alt"></i>
+                            <span>Brand Storytelling</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-film"></i>
+                            <span>Video Marketing</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-podcast"></i>
+                            <span>Multimedia Content</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-section">
+                    <span class="session-price">₦23,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Adekunle Gold</h3>
+                    <p class="mentor-title">E-commerce Sales Strategist</p>
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-store"></i>
+                            <span>E-commerce Platforms</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Online Sales Growth</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-truck"></i>
+                            <span>Logistics & Fulfillment</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-section">
+                    <span class="session-price">₦29,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Ngozi Okonjo-Iweala</h3>
+                    <p class="mentor-title">International Sales Expansion Expert</p>
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-globe"></i>
+                            <span>Global Market Entry</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-flag"></i>
+                            <span>Cross-border Sales</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-landmark"></i>
+                            <span>International Regulations</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-section">
+                    <span class="session-price">₦35,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Aisha Muhammed-Oyebode</h3>
+                    <p class="mentor-title">Social Media Marketing Guru</p>
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-share-alt"></i>
+                            <span>Viral Marketing</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fab fa-instagram"></i>
+                            <span>Influencer Marketing</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Social Analytics</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-section">
+                    <span class="session-price">₦31,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Nkechi Adesina</h3>
+                    <p class="mentor-title">Content Marketing Expert</p>
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-pencil-alt"></i>
+                            <span>Storytelling Strategy</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-video"></i>
+                            <span>Multimedia Content</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Content ROI Tracking</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-section">
+                    <span class="session-price">₦27,500<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Emeka Okafor</h3>
+                    <p class="mentor-title">E-commerce Strategist</p>
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Platform Optimization</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-truck"></i>
+                            <span>Fulfillment Systems</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Sales Analytics</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-section">
+                    <span class="session-price">₦29,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Zainab Abdullahi</h3>
+                    <p class="mentor-title">International Trade Consultant</p>
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-globe"></i>
+                            <span>Global Market Entry</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-file-contract"></i>
+                            <span>Cross-border Compliance</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-chart-network"></i>
+                            <span>Export Strategy</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-section">
+                    <span class="session-price">₦35,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Financial Management Mentors -->
+        <div class="mentor-grid" id="finance" style="display: none;">
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Oluwaseun Adesina</h3>
+                    <p class="mentor-title">Financial Planning Expert</p>
+                    
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Investment Strategy</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Risk Management</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-piggy-bank"></i>
+                            <span>Wealth Planning</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="price-section">
+                    <span class="session-price">₦28,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Michael Chen</h3>
+                    <p class="mentor-title">Corporate Finance Specialist</p>
+                    
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-table"></i>
+                            <span>Financial Analysis</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-bullseye"></i>
+                            <span>Strategic Planning</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Business Valuation</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="price-section">
+                    <span class="session-price">₦26,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Intangible Skills Mentors -->
+        <div class="mentor-grid" id="intangible" style="display: none;">
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Dr. Amina Hassan</h3>
+                    <p class="mentor-title">Leadership Development Coach</p>
+                    
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-crown"></i>
+                            <span>Executive Presence</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-users"></i>
+                            <span>Team Building</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>Change Management</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="price-section">
+                    <span class="session-price">₦24,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">David Williams</h3>
+                    <p class="mentor-title">Emotional Intelligence Expert</p>
+                    
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-brain"></i>
+                            <span>Self-Awareness</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-users"></i>
+                            <span>Relationship Management</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Stress Management</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="price-section">
+                    <span class="session-price">₦23,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Personal Growth Mentors -->
+        <div class="mentor-grid" id="personal" style="display: none;">
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Chiamaka Nneji</h3>
+                    <p class="mentor-title">Personal Development Guru</p>
+                    
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-bullseye"></i>
+                            <span>Goal Setting</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-rocket"></i>
+                            <span>Productivity</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-seedling"></i>
+                            <span>Habit Formation</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="price-section">
+                    <span class="session-price">₦17,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Tunde Bakare</h3>
+                    <p class="mentor-title">Time Management Expert</p>
+                    
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-list-ol"></i>
+                            <span>Task Prioritization</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-rocket"></i>
+                            <span>Efficiency Strategies</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Workflow Design</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="price-section">
+                    <span class="session-price">₦18,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Communication Mentors -->
+        <div class="mentor-grid" id="communication" style="display: none;">
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Halima Abubakar</h3>
+                    <p class="mentor-title">Public Speaking Coach</p>
+                    
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-microphone"></i>
+                            <span>Speech Delivery</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-presentation"></i>
+                            <span>Presentation Skills</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-users"></i>
+                            <span>Audience Engagement</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="price-section">
+                    <span class="session-price">₦19,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Dayo Ogunleye</h3>
+                    <p class="mentor-title">Communication Strategy Consultant</p>
+                    
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-conversation"></i>
+                            <span>Interpersonal Communication</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-handshake"></i>
+                            <span>Negotiation</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>Crisis Communication</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="price-section">
+                    <span class="session-price">₦21,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Design Thinking Mentors -->
+        <div class="mentor-grid" id="design" style="display: none;">
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Kayode Ayodele</h3>
+                    <p class="mentor-title">UX Design Consultant</p>
+                    
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-user-secret"></i>
+                            <span>User Research</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-vial"></i>
+                            <span>Usability Testing</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-puzzle-piece"></i>
+                            <span>Interaction Design</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="price-section">
+                    <span class="session-price">₦22,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Chinwe Ibe</h3>
+                    <p class="mentor-title">Brand Identity Designer</p>
+                    
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-palette"></i>
+                            <span>Visual Branding</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-certificate"></i>
+                            <span>Logo Design</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-book"></i>
+                            <span>Style Guides</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="price-section">
+                    <span class="session-price">₦24,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Operations Mentors -->
+        <div class="mentor-grid" id="operations" style="display: none;">
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Kabir Muhammed</h3>
+                    <p class="mentor-title">Process Optimization Specialist</p>
+                    
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-cog"></i>
+                            <span>Workflow Analysis</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-funnel-dollar"></i>
+                            <span>Lean Methodologies</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-robot"></i>
+                            <span>Automation Strategies</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="price-section">
+                    <span class="session-price">₦23,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="enterprise-card">
+                <div class="mentor-header">
+                    <div class="mentor-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="mentor-details">
+                    <h3 class="mentor-name">Blessing Okeke</h3>
+                    <p class="mentor-title">Quality Control Manager</p>
+                    
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>ISO Compliance</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-award"></i>
+                            <span>Six Sigma</span>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Performance Measurement</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="price-section">
+                    <span class="session-price">₦25,000<small>/session</small></span>
+                    <a href="/payment.html?package=Mentorship" class="book-now-btn">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <p class="domain-disclaimer">
+            Our mentorship partners maintain an average of 22 years industry experience. All sessions include 
+            pre-call preparation materials and post-session action plans. Matching based on your assessment 
+            profile available for premium members.
+        </p>
+
+        <script>
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.mentor-grid').forEach(c => c.style.display = 'none');
+                    button.classList.add('active');
+                    document.getElementById(button.dataset.tab).style.display = 'grid';
+                });
+            });
+        </script>
+    </main>
+
+    <script src="../app.js"></script>
+</body>
+</html>

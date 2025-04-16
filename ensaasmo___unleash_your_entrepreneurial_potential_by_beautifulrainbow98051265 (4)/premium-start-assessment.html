@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrepreneurial Assessment | Ensaasmo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="premium-start-assessment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="cyber-grid"></div>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/WhatsApp_Image_2025-02-17_at_11.10.12_PM-removebg-preview.png" alt="ENSAASMO Logo">
+            </a>
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html#pricing">Pricing</a>
+            <a href="index.html#assessment">Assessment</a>
+            <a href="index.html#resources">Resources</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="assessment-container">
+        <!-- Floating background elements -->
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        
+        <div class="assessment-content">
+            <div class="assessment-header">
+                <h1>Entrepreneurial Strength Assessment</h1>
+                <p>Discover your entrepreneurial strengths and areas for growth with our comprehensive assessment</p>
+            </div>
+            
+            <div class="intro-box">
+                <h3><i class="fas fa-lightbulb"></i> How to Complete This Assessment</h3>
+                <p>Rate your proficiency in each entrepreneurial skill area using the scale below:</p>
+                <ul>
+                    <li><strong>1 (Beginner):</strong> Limited knowledge or experience</li>
+                    <li><strong>2 (Basic):</strong> Some knowledge but limited practical application</li>
+                    <li><strong>3 (Intermediate):</strong> Good working knowledge and some experience</li>
+                    <li><strong>4 (Advanced):</strong> Strong knowledge and significant experience</li>
+                    <li><strong>5 (Expert):</strong> Comprehensive knowledge and extensive experience</li>
+                </ul>
+                <p>Be honest with yourself—your growth depends on accurate self-assessment.</p>
+            </div>
+
+            <form id="assessmentForm" class="question-form">
+                <div class="question-card">
+                    <div class="question-block">
+                        <h4 data-number="1">Sales Planning</h4>
+                        <p>Developing strategies to reach sales targets</p>
+                        <div class="rating-scale">
+                            <label>
+                                <input type="radio" name="salesPlanning" value="1" required>
+                                <span>1</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="salesPlanning" value="2">
+                                <span>2</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="salesPlanning" value="3">
+                                <span>3</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="salesPlanning" value="4">
+                                <span>4</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="salesPlanning" value="5">
+                                <span>5</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <h4 data-number="2">Pricing</h4>
+                        <p>Understanding how to set prices that maximize profits while remaining competitive</p>
+                        <div class="rating-scale">
+                            <label>
+                                <input type="radio" name="pricing" value="1" required>
+                                <span>1</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="pricing" value="2">
+                                <span>2</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="pricing" value="3">
+                                <span>3</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="pricing" value="4">
+                                <span>4</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="pricing" value="5">
+                                <span>5</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <h4 data-number="3">Negotiating</h4>
+                        <p>Securing favorable terms and conditions in deals</p>
+                        <div class="rating-scale">
+                            <label>
+                                <input type="radio" name="negotiating" value="1" required>
+                                <span>1</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="negotiating" value="2">
+                                <span>2</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="negotiating" value="3">
+                                <span>3</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="negotiating" value="4">
+                                <span>4</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="negotiating" value="5">
+                                <span>5</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="continue-btn-container">
+                    <button type="button" class="continue-btn">
+                        <span>Continue to Next Section</span> <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                
+                <div class="progress-indicator">
+                    <div class="progress-dot active"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot"></div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Add hover effects for rating scale
+        document.querySelectorAll('.rating-scale label').forEach(label => {
+            const value = label.querySelector('input').value;
+            let labelText = 'Beginner';
+            
+            if (value == 2) labelText = 'Basic';
+            if (value == 3) labelText = 'Intermediate';
+            if (value == 4) labelText = 'Advanced';
+            if (value == 5) labelText = 'Expert';
+            
+            label.setAttribute('data-label', labelText);
+        });
+        
+        // Add validation and navigation
+        document.querySelector('.continue-btn').addEventListener('click', function() {
+            // Check if all questions are answered
+            const form = document.getElementById('assessmentForm');
+            const inputs = form.querySelectorAll('input[type="radio"]:checked');
+            const questionBlocks = form.querySelectorAll('.question-block');
+            
+            if (inputs.length < questionBlocks.length) {
+                // Show error message
+                alert('Please answer all questions before continuing.');
+                return;
+            }
+            
+            // Navigate to next page
+            window.location.href = 'assessment-page-2.html';
+        });
+        
+        // Add animation to continue button
+        const continueBtn = document.querySelector('.continue-btn');
+        continueBtn.addEventListener('mouseenter', function() {
+            this.classList.add('hover');
+        });
+        continueBtn.addEventListener('mouseleave', function() {
+            this.classList.remove('hover');
+        });
+    </script>
+</body>
+</html>
